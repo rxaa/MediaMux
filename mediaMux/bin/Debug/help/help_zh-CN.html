@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script> -->
+</head>
+
+<body>
+    <a href="#burn_in_subtitle">
+        <h2>1.如何内封(burn in)字幕</h2>
+    </a>
+    <a href="#slide_show">
+        <h2>2.如何制作幻灯片视频</h2>
+    </a>
+    <a href="#pip">
+        <h2>3.如何制作画中画</h2>
+    </a>
+
+    <p>
+        <h2 id="burn_in_subtitle">1.如何内封(burn in)字幕</h2>
+        如下图所示, 添加待封装的视频与字幕文件. <br />
+        在左下角的文件流里将不需要的字幕取消掉, 或者拖动字幕到最上方(默认只压入第一个选中字幕).<br />
+        设置容器为mp4.<br />
+        设置视频编码 (不设置编码的话文本字幕将被软压入mp4, 图形字幕将被忽略)<br />
+        开始封装, OK.<br />
+        <img src="imgs/2352.png" width="100%" />
+    </p>
+
+    <p>
+        <h2 id="slide_show">2.如何制作幻灯片视频</h2>
+
+        先将待制作的图片全部修剪到同样大小(当然也可以在MediaMux里对图片右键编辑参数调整缩放, 只是这样需要一张张调整, 稍微麻烦一点).<br />
+        将所有图片,音频文件与字幕拖入文件框, 选择编码参数, 注意一定要添加一个音频文件, 否则编码将无限循环(没有音频可以设置文件的持续时长):<br />
+        <img src="imgs/3245.png" width="100%" /><br />
+        很多音乐文件里都包含有专辑图片cover.jpg, 像上面这种, 需要把它取消掉<br />
+        <p>从第二张图片开始, 右键(或快捷键F2)编辑文件参数, 设置'覆盖'属性里的开始时间: 30秒, 淡入时间: 0.5秒</p>
+        <img src="imgs/4566.png" width="100%" /><br />
+        <p>
+            设置第三张图片, 开始时间: 1:0分钟, 淡入时间:0.5秒<br />
+            依次类推......<br />
+            开始封装, OK.<br />
+        </p>
+    </p>
+
+    <p>
+        <h2 id="pip">3.如何制作画中画</h2>
+        将一个视频(或图片)嵌入另一个视频. 和幻灯片一样同样是设置'覆盖'属性. <br />
+        右键编辑需要覆盖的视频, 设置覆盖位置, x,y坐标(可以为负值表示相反方向移动), 缩放大小等等. <br />
+        如果同时需要画中画的音频的话, 也可以将'混音'属性选上.(同时需要设置音频编码参数) <br />
+        <img src="imgs/5354.png" width="100%" /><br />
+        以上表示将Upgrade.mkv缩放覆盖到venom.mkv的右下角, 边距10像素, 缩放300:-1 , 表示宽度300像素, 高度自适应.(当视频或音频设置'覆盖'或'混音'属性时,
+        左下角的文件流会被自动取消选择,
+        否则的话这个视频或音频将被做为第二轨道封装.)
+
+    </p>
+</body>
+
+</html>

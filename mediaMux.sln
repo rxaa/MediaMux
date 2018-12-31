@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.16
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mediaMux", "mediaMux\mediaMux.csproj", "{B7B17D75-69B4-4F25-8E03-D53964CE5583}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B7B17D75-69B4-4F25-8E03-D53964CE5583}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7B17D75-69B4-4F25-8E03-D53964CE5583}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7B17D75-69B4-4F25-8E03-D53964CE5583}.Debug|x86.ActiveCfg = Debug|x86
+		{B7B17D75-69B4-4F25-8E03-D53964CE5583}.Debug|x86.Build.0 = Debug|x86
+		{B7B17D75-69B4-4F25-8E03-D53964CE5583}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7B17D75-69B4-4F25-8E03-D53964CE5583}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7B17D75-69B4-4F25-8E03-D53964CE5583}.Release|x86.ActiveCfg = Release|x86
+		{B7B17D75-69B4-4F25-8E03-D53964CE5583}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {730E8135-547B-4C32-AE56-87F3C6D789B3}
+	EndGlobalSection
+EndGlobal

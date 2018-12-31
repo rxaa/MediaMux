@@ -1,0 +1,11 @@
+/mediaMux/bin/x86
+/mediaMux/bin/Release
+/mediaMux/bin/Debug/ffmpeg
+/mediaMux/bin/Debug/CodeListCfg.json
+/mediaMux/bin/Debug/ConfigFile.json
+/mediaMux/bin/Debug/errlog.txt
+/mediaMux/bin/Debug/lang.txt
+/mediaMux/bin/Debug/Newtonsoft.Json.pdb
+/mediaMux/bin/Debug/mediaMux.pdb
+/mediaMux/obj
+/.vs
