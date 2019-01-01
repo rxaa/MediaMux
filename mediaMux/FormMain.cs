@@ -327,7 +327,6 @@ namespace MediaMux
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
             flowLayoutPanelProp.Enabled = false;
 
             var dd = new Dictionary<string, string>();
@@ -589,9 +588,7 @@ namespace MediaMux
                 this.BeginInvoke(new Action(() =>
                 {
                     richTextBoxLog.Text += "\r\n" + line;
-                    //将光标位置设置到当前内容的末尾
                     richTextBoxLog.SelectionStart = richTextBoxLog.Text.Length;
-                    //滚动到光标位置
                     richTextBoxLog.ScrollToCaret();
                 }));
 
@@ -828,7 +825,7 @@ namespace MediaMux
 
 
             var codeList = new FormEditTitle();
-            codeList.setJSON(convert);
+            codeList.setObj(convert, ffs);
             if (!codeList.startSelect())
                 return;
 
@@ -1220,9 +1217,19 @@ namespace MediaMux
             var ff = ffs[index];
 
             var fp = new FormPlayer();
-           
 
-            fp.setFilters(ff.parameters.filters.getCMD(), ff.parameters.audio_filters.getCMD());
+            var vf = ff.parameters.filters.getCMD();
+            var af = ff.parameters.audio_filters.getCMD();
+
+
+
+            if (checkBoxConvertAllAudio.Checked)
+            {
+                vf = dfv.joinStr(",", vf, convert.video_filters.getCMD());
+                af = dfv.joinStr(",", vf, convert.audio_filters.getCMD());
+            }
+            vf = dfv.joinStr(",", vf, FFmpeg.getFilesSubtitle(ffs));
+            fp.setFilters(vf, af);
             fp.play(ff.fileName);
 
             fp.ShowDialog();

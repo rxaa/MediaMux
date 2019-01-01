@@ -15,6 +15,7 @@ namespace MediaMux
     public partial class FormEditTitle : Form
     {
         public ConvertMedia convert = new ConvertMedia();
+        IList<FFmpeg> ffList = null;
 
         public void toCursor()
         {
@@ -43,8 +44,9 @@ namespace MediaMux
         }
 
 
-        public void setJSON(ConvertMedia obj)
+        public void setObj(ConvertMedia obj, IList<FFmpeg> ffs)
         {
+            ffList = ffs;
             convert = obj;
             propertyGrid1.SelectedObject = convert;
         }
@@ -70,7 +72,7 @@ namespace MediaMux
 
             try
             {
-               
+
                 com.codes.dat.list[textBoxTitle.Text] = convert;
                 com.codes.save();
                 init();
@@ -110,7 +112,7 @@ namespace MediaMux
             com.codes.dat.list.GetVal(key, res =>
             {
                 textBoxTitle.Text = key;
-                setJSON(JsonConvert.DeserializeAnonymousType(JsonConvert.SerializeObject(res), res));
+                setObj(JsonConvert.DeserializeAnonymousType(JsonConvert.SerializeObject(res), res), ffList);
             });
         }
 
@@ -137,6 +139,25 @@ namespace MediaMux
         {
             hasSelected = true;
             this.Close();
+        }
+
+        private void buttonPreview_Click(object sender, EventArgs e)
+        {
+
+            foreach (var ff in ffList)
+            {
+                if (ff.info.streams.Sum(it => (it.isVideo() || it.isAudio()) ? 1 : 0) > 0)
+                {
+                    var fp = new FormPlayer();
+                    var vf = dfv.joinStr(",", convert.video_filters.getCMD(), FFmpeg.getFilesSubtitle(ffList));
+                    fp.setFilters(vf, convert.audio_filters.getCMD());
+                    fp.play(ff.fileName);
+
+                    fp.ShowDialog();
+                    break;
+                }
+            }
+
         }
     }
 }

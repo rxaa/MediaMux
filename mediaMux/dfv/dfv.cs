@@ -69,7 +69,15 @@ public class dfv
 
     public static string strEscape(string str)
     {
-        return System.Text.RegularExpressions.Regex.Escape(str).Replace(":", "\\:").Replace(";", "\\;");
+        return System.Text.RegularExpressions.Regex.Escape(str)
+            .Replace(":", "\\:")
+            .Replace(";", "\\;")
+             .Replace("]", "\\]")
+             .Replace("'", "'\\\\\\''")
+             //.Replace("-", "\\-")
+             //.Replace("!", "\\!")
+             //.Replace("_", "\\_")
+            ;
     }
 
     public static string codeWord = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()_+-=[];',./{}:<>?";
@@ -264,6 +272,20 @@ public class dfv
         return true;
     }
 
+    public static string joinStr(string separate, params string[] strs)
+    {
+        var ret = "";
+        foreach (var ss in strs)
+        {
+            if (ss != null && ss != "")
+            {
+                ret += ss + separate;
+            }
+        }
+        if (ret.Length > 0)
+            ret = ret.Substring(0, ret.Length - separate.Length);
+        return ret;
+    }
 
     /// <summary>
     /// get an unrepeat file name

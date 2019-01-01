@@ -14,6 +14,7 @@ del %out_path%\MediaMux\CodeListCfg.json
 del %out_path%\MediaMux\ConfigFile.json
 del %out_path%\MediaMux\Newtonsoft.Json.pdb
 del %out_path%\MediaMux\Newtonsoft.Json.xml
+del %out_path%\MediaMux\concat.txt
 
 XCOPY mediaMux\bin\x86\Release %out_path%\MediaMux32\ /Y /E
 XCOPY mediaMux\bin\Debug\help %out_path%\MediaMux32\help\ /Y /E
@@ -22,6 +23,7 @@ del %out_path%\MediaMux32\CodeListCfg.json
 del %out_path%\MediaMux32\ConfigFile.json
 del %out_path%\MediaMux32\Newtonsoft.Json.pdb
 del %out_path%\MediaMux32\Newtonsoft.Json.xml
+del %out_path%\MediaMux\concat.txt
 
 del %out_path%\MediaMux64.rar
 del %out_path%\MediaMux32.rar

@@ -33,6 +33,9 @@ namespace df
             playForm = null;
             try
             {
+                ffplay_on_error(null);
+                ffplay_on_complete(null);
+                ffplay_on_success(null);
                 ffplay_stop();
             }
             catch (Exception)

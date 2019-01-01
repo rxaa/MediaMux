@@ -572,6 +572,27 @@ namespace df
              return res;
          };
 
+
+        public static string getFilesSubtitle(IList<FFmpeg> files)
+        {
+            foreach (var ff in files)
+            {
+                if (ff.info.streams.Count != 1)
+                    continue;
+
+                var st = ff.info.streams[0];
+                if (st.selected)
+                {
+                    var fi = files[st.fileIndex].fileName;
+                    if (st.isSubtitle() && !st.isImgSubtitle())
+                    {
+                        return getSubtitle(fi, st);
+                    }
+                }
+            }
+            return "";
+        }
+
         /// <summary>
         /// 
         /// </summary>

@@ -110,8 +110,9 @@ namespace df
             foreach (var a in source)
             {
                 var ss = func(a);
-                if (ss != null)
+                if (ss != null) { 
                     ret += ss + op;
+                }
             }
             if (ret.Length > 0)
                 ret = ret.Substring(0, ret.Length - op.Length);

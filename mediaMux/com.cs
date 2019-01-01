@@ -38,9 +38,12 @@ namespace MediaMux
             return str;
         }
         public static void setSubtitleFont()
-        { 
+        {
             FFmpeg.getSubtitle = (subtName, stream) =>
             {
+                if (stream.codec_name == "sami")
+                    return "";
+
                 var res = "subtitles='" + dfv.strEscape(subtName) + "'";
 
                 if (stream.codec_name == "ass" && com.cfg.dat.override_ass != "1")
