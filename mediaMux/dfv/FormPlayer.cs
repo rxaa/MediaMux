@@ -57,12 +57,12 @@ namespace df
                + ",h:" + getCropVal(imageCroppingBox1.SelectedRectangle.Height) + "}";
         }
 
-        public bool crop(string file)
+        public bool cropStart(string file)
         {
             play(file);
             cropStart();
             ShowDialog();
-            if (imageCroppingBox1.IsDrawed)
+            if (imageCroppingBox1.IsDrawed && selectedTime != "")
             {
                 return true;
             }
@@ -188,6 +188,7 @@ namespace df
 
         private void FormPlayer_FormClosing(object sender, FormClosingEventArgs e)
         {
+
             timer1.Stop();
             FFplay.stop();
         }
@@ -389,11 +390,16 @@ namespace df
                 imageCroppingBox1.Invalidate();
         }
 
-        private void cancelselectionToolStripMenuItem_Click(object sender, EventArgs e)
+        void cancelSelection()
         {
             imageCroppingBox1.Clear();
             imageCroppingBox1.Hide();
             timer2.Stop();
+        }
+
+        private void cancelselectionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            cancelSelection();
         }
     }
 }

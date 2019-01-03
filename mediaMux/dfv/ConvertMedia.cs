@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
@@ -314,6 +315,11 @@ namespace df
         public FilterPad pad { get; set; } = new FilterPad();
 
 
+
+        [DisplayNameDf("rotate")]
+        [DescriptionDf("rotate_descr")]
+        public FilterRotate rotate { get; set; } = new FilterRotate();
+
         [DisplayNameDf("setsar")]
         [DescriptionDf("setsar_descr")]
         public string setsar { get; set; } = "";
@@ -325,6 +331,29 @@ namespace df
         {
             return FileConvertParameter.reflectFilter(this);
         }
+    }
+
+    [TypeConverterAttribute(typeof(SubClassConverter))]
+    public class FilterRotate
+    {
+        [DisplayNameDf("angle")]
+        [DescriptionDf("angle_descr")]
+        [TypeConverterAttribute(typeof(RotateConverter))]
+        public string angle { get; set; } = "";
+
+        [DisplayNameDf("out_w")]
+        [DescriptionDf("out_w_descr")]
+        public string out_w { get; set; } = "";
+
+        [DisplayNameDf("out_h")]
+        [DescriptionDf("out_h_descr")]
+        public string out_h { get; set; } = "";
+
+        [DisplayNameDf("fillcolor")]
+        [DescriptionDf("fillcolor_descr")]
+        [EditorAttribute(typeof(PropertyGridColor), typeof(System.Drawing.Design.UITypeEditor))]
+        public string fillcolor { get; set; } = "";
+
     }
 
     [TypeConverterAttribute(typeof(SubClassConverter))]
@@ -379,7 +408,7 @@ namespace df
         public string gamma_weight { get; set; } = "";
     }
 
-    
+
     [TypeConverterAttribute(typeof(SubClassJSONConverter))]
     public class FilterCrop
     {
@@ -424,6 +453,7 @@ namespace df
 
         [DisplayNameDf("color")]
         [DescriptionDf("color_descr")]
+        [EditorAttribute(typeof(PropertyGridColor), typeof(System.Drawing.Design.UITypeEditor))]
         public string color { get; set; } = "";
 
     }

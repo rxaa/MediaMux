@@ -305,5 +305,15 @@
   "dynaudnorm": "动态标准化",
   "dynaudnorm_descr": "This filter applies a certain amount of gain to the input audio in order to bring its peak magnitude to a target level (e.g. 0 dBFS).",
   "gradfun": "修复色带",
-  "gradfun_descr": "Fix the banding artifacts that are sometimes introduced into nearly flat regions by truncation to 8-bit color depth. Interpolate the gradients that should go where the bands are, and dither them.\r\nIt is designed for playback only.Do not use it prior to lossy compression, because compression tends to lose the dither and bring back the bands.\r\nIt accepts the following parameters:\r\n\r\n‘strength’\r\nThe maximum amount by which the filter will change any one pixel. This is also the threshold for detecting nearly flat regions. Acceptable values range from .51 to 64; the default value is 1.2. Out-of-range values will be clipped to the valid range.\r\n\r\n‘radius’\r\nThe neighborhood to fit the gradient to.A larger radius makes for smoother gradients, but also prevents the filter from modifying the pixels near detailed regions.Acceptable values are 8-32; the default value is 16. Out-of-range values will be clipped to the valid range.\r\n\r\nAlternatively, the options can be specified as a flat string: strength[:radius]"
+  "gradfun_descr": "Fix the banding artifacts that are sometimes introduced into nearly flat regions by truncation to 8-bit color depth. Interpolate the gradients that should go where the bands are, and dither them.\r\nIt is designed for playback only.Do not use it prior to lossy compression, because compression tends to lose the dither and bring back the bands.\r\nIt accepts the following parameters:\r\n\r\n‘strength’\r\nThe maximum amount by which the filter will change any one pixel. This is also the threshold for detecting nearly flat regions. Acceptable values range from .51 to 64; the default value is 1.2. Out-of-range values will be clipped to the valid range.\r\n\r\n‘radius’\r\nThe neighborhood to fit the gradient to.A larger radius makes for smoother gradients, but also prevents the filter from modifying the pixels near detailed regions.Acceptable values are 8-32; the default value is 16. Out-of-range values will be clipped to the valid range.\r\n\r\nAlternatively, the options can be specified as a flat string: strength[:radius]",
+  "rotate": "旋转",
+  "rotate_descr": "Rotate video by an arbitrary angle expressed in radians.",
+  "angle": "角度",
+  "angle_descr": "Set an expression for the angle by which to rotate the input video clockwise, expressed as a number of radians. A negative value will result in a counter-clockwise rotation. By default it is set to '0'.",
+  "out_w": "输出宽度",
+  "out_w_descr": "Set the output width expression, default value is 'iw'. This expression is evaluated just once during configuration.",
+  "out_h": "输出高度",
+  "out_h_descr": "Set the output height expression, default value is 'ih'. This expression is evaluated just once during configuration.",
+  "fillcolor": "背景颜色",
+  "fillcolor_descr": "Set the color used to fill the output area not covered by the rotated image."
 }

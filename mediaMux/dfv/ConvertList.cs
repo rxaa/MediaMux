@@ -310,6 +310,22 @@ namespace df
         }
     }
 
+    public class RotateConverter : StringConverter
+    {
+        public override bool GetStandardValuesSupported(ITypeDescriptorContext context)
+        {
+            return true;
+        }
+        public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
+        {
+            return new StandardValuesCollection(new string[] { "", "45*PI/180", "90*PI/180", "180*PI/180", "270*PI/180" });
+        }
+        public override bool GetStandardValuesExclusive(ITypeDescriptorContext context)
+        {
+            return false;
+        }
+    }
+
 
     public class ScaleFlagConverter : StringConverter
     {

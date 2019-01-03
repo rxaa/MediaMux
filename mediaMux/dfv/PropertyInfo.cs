@@ -75,6 +75,33 @@ namespace df
         }
     }
 
+    public class PropertyGridColor : UITypeEditor
+    {
+
+        public PropertyGridColor()
+        {
+        }
+
+        public override UITypeEditorEditStyle GetEditStyle(System.ComponentModel.ITypeDescriptorContext context)
+        {
+            return UITypeEditorEditStyle.Modal;
+
+        }
+
+        public override object EditValue(System.ComponentModel.ITypeDescriptorContext context, System.IServiceProvider provider, object value)
+        {
+            ColorDialog ColorForm = new ColorDialog();
+            if (ColorForm.ShowDialog() == DialogResult.OK)
+            {
+                var c = ColorForm.Color;
+                return "0x" + c.R.ToString("X2") + c.G.ToString("X2") + c.B.ToString("X2");
+            }
+
+            return value;
+
+        }
+
+    }
 
     /// <summary>
     ///  Crop Video on PropertyGrid
@@ -109,7 +136,7 @@ namespace df
             {
                 var para = inst as FileConvertParameter;
                 var fp = new FormPlayer();
-                if (fp.crop(para.fileName))
+                if (fp.cropStart(para.fileName))
                 {
                     return JsonConvert.DeserializeObject(fp.getSelectedRectStr(), value.GetType());
                 }
@@ -425,7 +452,7 @@ namespace df
         {
             if (value is string)
             {
-                if(value.ToString()=="")
+                if (value.ToString() == "")
                     return JsonConvert.DeserializeObject("{}", context.PropertyDescriptor.PropertyType);
                 return JsonConvert.DeserializeObject(value as string, context.PropertyDescriptor.PropertyType);
             }

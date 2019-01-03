@@ -290,5 +290,17 @@ The maximum amount by which the filter will change any one pixel. This is also t
 The neighborhood to fit the gradient to.A larger radius makes for smoother gradients, but also prevents the filter from modifying the pixels near detailed regions.Acceptable values are 8-32; the default value is 16. Out-of-range values will be clipped to the valid range.
 
 Alternatively, the options can be specified as a flat string: strength[:radius]";
+
+
+        public string rotate = "rotate";
+        public string rotate_descr = "Rotate video by an arbitrary angle expressed in radians.";
+        public string angle = "angle";
+        public string angle_descr = "Set an expression for the angle by which to rotate the input video clockwise, expressed as a number of radians. A negative value will result in a counter-clockwise rotation. By default it is set to '0'.";
+        public string out_w = "out w";
+        public string out_w_descr = "Set the output width expression, default value is 'iw'. This expression is evaluated just once during configuration.";
+        public string out_h = "out h";
+        public string out_h_descr = "Set the output height expression, default value is 'ih'. This expression is evaluated just once during configuration.";
+        public string fillcolor = "fill color";
+        public string fillcolor_descr = "Set the color used to fill the output area not covered by the rotated image.";
     }
 }

@@ -175,13 +175,10 @@
             // 
             // imageCroppingBox1
             // 
-            this.imageCroppingBox1.BackColor = System.Drawing.Color.Black;
             this.imageCroppingBox1.ContextMenuStrip = this.contextMenuStrip1;
-            this.imageCroppingBox1.Image = null;
             this.imageCroppingBox1.IsLockSelected = false;
             this.imageCroppingBox1.IsSetClip = true;
             this.imageCroppingBox1.Location = new System.Drawing.Point(68, 52);
-            this.imageCroppingBox1.MaskColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.imageCroppingBox1.Name = "imageCroppingBox1";
             this.imageCroppingBox1.SelectedRectangle = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.imageCroppingBox1.Size = new System.Drawing.Size(755, 366);
