@@ -1128,7 +1128,14 @@ namespace df
             {
                 CommandTask.inst_.StartInfo.UserName = "user kill";
                 CommandTask.inst_.StandardInput.WriteLine("q");
-                Thread.Sleep(300);
+                for (int i = 0; i < 10; i++)
+                {
+                    if (CommandTask.inst_ != null)
+                        Thread.Sleep(100);
+                    else
+                        break;
+                }
+
                 if (CommandTask.inst_ != null)
                     CommandTask.inst_.Kill();
             }

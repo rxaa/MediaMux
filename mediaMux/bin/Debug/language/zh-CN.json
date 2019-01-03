@@ -129,6 +129,8 @@
   "Please_input_time": "至少输入两个时间戳.",
   "next_frame": "下一帧 (F)",
   "copy_timestamp": "复制当前时间",
+  "make_selection": "创建选区",
+  "cancel_selection": "取消选区",
   "effect": "效果",
   "time": "时间",
   "loop": "循环",

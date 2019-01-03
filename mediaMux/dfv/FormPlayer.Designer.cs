@@ -32,13 +32,17 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.steptonextframeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copytimestapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.makeselectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cancelselectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buttonPause = new System.Windows.Forms.Button();
             this.labelTime = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.copytimestapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.imageCroppingBox1 = new df.ImageCroppingBox();
             this.myProgressBar1 = new df.MyProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -58,22 +62,46 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseClick);
+            this.pictureBox1.Resize += new System.EventHandler(this.pictureBox1_Resize);
             // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.steptonextframeToolStripMenuItem,
-            this.copytimestapToolStripMenuItem});
+            this.copytimestapToolStripMenuItem,
+            this.makeselectionToolStripMenuItem,
+            this.cancelselectionToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(200, 80);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(200, 100);
             // 
             // steptonextframeToolStripMenuItem
             // 
             this.steptonextframeToolStripMenuItem.Name = "steptonextframeToolStripMenuItem";
-            this.steptonextframeToolStripMenuItem.Size = new System.Drawing.Size(185, 24);
+            this.steptonextframeToolStripMenuItem.Size = new System.Drawing.Size(199, 24);
             this.steptonextframeToolStripMenuItem.Text = "next_frame";
             this.steptonextframeToolStripMenuItem.Click += new System.EventHandler(this.steptonextframeToolStripMenuItem_Click);
+            // 
+            // copytimestapToolStripMenuItem
+            // 
+            this.copytimestapToolStripMenuItem.Name = "copytimestapToolStripMenuItem";
+            this.copytimestapToolStripMenuItem.Size = new System.Drawing.Size(199, 24);
+            this.copytimestapToolStripMenuItem.Text = "copy_timestamp";
+            this.copytimestapToolStripMenuItem.Click += new System.EventHandler(this.copytimestapToolStripMenuItem_Click);
+            // 
+            // makeselectionToolStripMenuItem
+            // 
+            this.makeselectionToolStripMenuItem.Name = "makeselectionToolStripMenuItem";
+            this.makeselectionToolStripMenuItem.Size = new System.Drawing.Size(199, 24);
+            this.makeselectionToolStripMenuItem.Text = "make_selection";
+            this.makeselectionToolStripMenuItem.Click += new System.EventHandler(this.makeselectionToolStripMenuItem_Click);
+            // 
+            // cancelselectionToolStripMenuItem
+            // 
+            this.cancelselectionToolStripMenuItem.Name = "cancelselectionToolStripMenuItem";
+            this.cancelselectionToolStripMenuItem.Size = new System.Drawing.Size(199, 24);
+            this.cancelselectionToolStripMenuItem.Text = "cancel_selection";
+            this.cancelselectionToolStripMenuItem.Click += new System.EventHandler(this.cancelselectionToolStripMenuItem_Click);
             // 
             // buttonPause
             // 
@@ -117,6 +145,17 @@
             this.panel1.Size = new System.Drawing.Size(960, 59);
             this.panel1.TabIndex = 6;
             // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Location = new System.Drawing.Point(868, 31);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(84, 28);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "Ok";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // richTextBox1
             // 
             this.richTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
@@ -129,23 +168,26 @@
             this.richTextBox1.TabIndex = 7;
             this.richTextBox1.Text = "text";
             // 
-            // button1
+            // timer2
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(868, 31);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(84, 28);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Ok";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.timer2.Interval = 10;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
-            // copytimestapToolStripMenuItem
+            // imageCroppingBox1
             // 
-            this.copytimestapToolStripMenuItem.Name = "copytimestapToolStripMenuItem";
-            this.copytimestapToolStripMenuItem.Size = new System.Drawing.Size(199, 24);
-            this.copytimestapToolStripMenuItem.Text = "copy_timestamp";
-            this.copytimestapToolStripMenuItem.Click += new System.EventHandler(this.copytimestapToolStripMenuItem_Click);
+            this.imageCroppingBox1.BackColor = System.Drawing.Color.Black;
+            this.imageCroppingBox1.ContextMenuStrip = this.contextMenuStrip1;
+            this.imageCroppingBox1.Image = null;
+            this.imageCroppingBox1.IsLockSelected = false;
+            this.imageCroppingBox1.IsSetClip = true;
+            this.imageCroppingBox1.Location = new System.Drawing.Point(68, 52);
+            this.imageCroppingBox1.MaskColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.imageCroppingBox1.Name = "imageCroppingBox1";
+            this.imageCroppingBox1.SelectedRectangle = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.imageCroppingBox1.Size = new System.Drawing.Size(755, 366);
+            this.imageCroppingBox1.TabIndex = 7;
+            this.imageCroppingBox1.Text = "imageCroppingBox1";
+            this.imageCroppingBox1.Visible = false;
             // 
             // myProgressBar1
             // 
@@ -162,6 +204,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(960, 603);
+            this.Controls.Add(this.imageCroppingBox1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pictureBox1);
             this.KeyPreview = true;
@@ -199,5 +242,9 @@
         public System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem steptonextframeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem copytimestapToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem makeselectionToolStripMenuItem;
+        private ImageCroppingBox imageCroppingBox1;
+        private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.ToolStripMenuItem cancelselectionToolStripMenuItem;
     }
 }

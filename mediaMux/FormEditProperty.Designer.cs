@@ -62,8 +62,9 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.propertyGrid1);
             this.Name = "FormEditProperty";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Edit";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormEditProperty_FormClosing);
             this.Load += new System.EventHandler(this.FormJson_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FormJson_KeyPress);
             this.ResumeLayout(false);

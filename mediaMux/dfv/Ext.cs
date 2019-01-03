@@ -35,6 +35,12 @@ namespace df
             }
         }
 
+        /// <summary>
+        /// bind control text to obj property
+        /// </summary>
+        /// <param name="control"></param>
+        /// <param name="obj"></param>
+        /// <param name="onSet"></param>
         public static void bindText<T>(this T control, Expression<Func<string>> obj, Action onSet = null) where T : Control
         {
             var info = obj.Body;
@@ -61,6 +67,12 @@ namespace df
             control.TextChanged += newEvent;
         }
 
+        /// <summary>
+        /// bind ComboBox index to obj property
+        /// </summary>
+        /// <param name="control"></param>
+        /// <param name="obj"></param>
+        /// <param name="onSet"></param>
         public static void bindIndex(this ComboBox control, Expression<Func<int>> obj, Action onSet = null)
         {
             var info = obj.Body;

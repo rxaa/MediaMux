@@ -17,22 +17,70 @@ namespace df
 
         public static Action<FormPlayer> onInit = null;
 
+
         public FormPlayer()
         {
             InitializeComponent();
             onInit?.Invoke(this);
 
             AppLanguage.InitLanguage(contextMenuStrip1);
+
+
+        }
+
+
+        int getCropVal(int val)
+        {
+            return (int)Math.Ceiling(val * cropScale) & ~1;
+        }
+
+
+
+        void showCropInfo()
+        {
+            richTextBox1.Text = getSelectedRectStr();
+        }
+
+        public Rectangle getSelectedRect()
+        {
+            return new Rectangle(getCropVal(imageCroppingBox1.SelectedRectangle.X)
+                , getCropVal(imageCroppingBox1.SelectedRectangle.Y)
+                    , getCropVal(imageCroppingBox1.SelectedRectangle.Width)
+                    , getCropVal(imageCroppingBox1.SelectedRectangle.Height));
+        }
+
+        public string getSelectedRectStr()
+        {
+            return "{x:" + getCropVal(imageCroppingBox1.SelectedRectangle.X)
+               + ",y:" + getCropVal(imageCroppingBox1.SelectedRectangle.Y)
+               + ",w:" + getCropVal(imageCroppingBox1.SelectedRectangle.Width)
+               + ",h:" + getCropVal(imageCroppingBox1.SelectedRectangle.Height) + "}";
+        }
+
+        public bool crop(string file)
+        {
+            play(file);
+            cropStart();
+            ShowDialog();
+            if (imageCroppingBox1.IsDrawed)
+            {
+                return true;
+            }
+            return false;
         }
 
         bool isDragging = false;
         private void FormPlayer_Load(object sender, EventArgs e)
         {
+            imageCroppingBox1._Image = pictureBox1;
+            imageCroppingBox1.onMove = me =>
+            {
+                showCropInfo();
+            };
+
             labelTime.Text = "";
             this.myProgressBar1.addControlMove(labelTime);
             this.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseWheel);
-
-
 
             myProgressBar1.onMove = () =>
             {
@@ -83,7 +131,6 @@ namespace df
 
         ActionString onErrorAction = null;
 
-
         void onError(string err)
         {
             errorStr += err;
@@ -93,14 +140,16 @@ namespace df
             }));
         }
 
+
+
+
+
         public string selectTime(string file)
         {
             play(file);
             ShowDialog();
             return selectedTime;
         }
-
-
 
         public void play(string name)
         {
@@ -113,17 +162,10 @@ namespace df
                  try
                  {
                      FFplay.ffplay_on_error(onErrorAction);
-                     FFplay.ffplay_on_success(() =>
-                     {
-                         this.BeginInvoke(new Action(() =>
-                         {
-                             timer1.Start();
-                         }));
-
-                     });
                      FFplay.play(name
                                 , pictureBox1.Handle
                                 , this);
+                     timer1.Start();
                  }
                  catch (Exception e)
                  {
@@ -156,8 +198,12 @@ namespace df
         {
             resizeW = 0;
             resizeH = 0;
-        }
 
+        }
+        private void pictureBox1_Resize(object sender, EventArgs e)
+        {
+            cropResize();
+        }
 
         int resizeW = 0;
         int resizeH = 0;
@@ -220,10 +266,9 @@ namespace df
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-        
+
             try
             {
-
                 var dur = FFplay.ffplay_get_duration();
 
 
@@ -243,7 +288,6 @@ namespace df
                 if (dur < 1 || isDragging || state == 0)
                     return;
 
-              
 
                 myProgressBar1.setValue((int)(time * 1000 / dur));
             }
@@ -269,6 +313,87 @@ namespace df
         private void copytimestapToolStripMenuItem_Click(object sender, EventArgs e)
         {
             dfv.SetClipboard(dfv.timeToStr2(FFplay.ffplay_get_position(), false));
+        }
+
+        double cropScale = 0;
+        void cropResize()
+        {
+            if (!imageCroppingBox1.Visible)
+                return;
+
+            int scr_width = pictureBox1.Width;
+            int scr_height = pictureBox1.Height;
+            var aspect_ratio = FFplay.ffplay_get_aspect_ratio();
+            int width = FFplay.ffplay_get_w(), height = FFplay.ffplay_get_h();
+
+            if (width < 1 || height < 1)
+                return;
+
+            height = scr_height;
+            width = (int)Math.Ceiling(height * aspect_ratio) & ~1;
+            if (width > scr_width)
+            {
+                width = scr_width;
+                height = (int)Math.Ceiling(width / aspect_ratio) & ~1;
+            }
+            int x = (scr_width - width) / 2;
+            int y = (scr_height - height) / 2;
+
+            var oldScale = cropScale;
+            cropScale = (double)FFplay.ffplay_get_w() / width;
+            var newScale = oldScale / cropScale;
+
+
+            imageCroppingBox1.Left = x;
+            imageCroppingBox1.Top = y;
+            imageCroppingBox1.Size = new Size(width, height);
+
+            if (imageCroppingBox1.IsDrawed)
+            {
+                imageCroppingBox1.SelectedRectangle = new Rectangle(
+                    (int)(imageCroppingBox1.SelectedRectangle.X * newScale)
+                    , (int)(imageCroppingBox1.SelectedRectangle.Y * newScale)
+                      , (int)(imageCroppingBox1.SelectedRectangle.Width * newScale)
+                      , (int)(imageCroppingBox1.SelectedRectangle.Height * newScale));
+            }
+            showCropInfo();
+        }
+
+        Action cropAction = null;
+
+        void cropStart()
+        {
+            cropAction = () =>
+            {
+                if (FFplay.ffplay_get_w() < 1 || FFplay.ffplay_get_h() < 1)
+                    return;
+                imageCroppingBox1.Clear();
+                imageCroppingBox1.Show();
+                cropResize();
+                cropAction = null;
+            };
+
+            timer2.Start();
+        }
+
+        private void makeselectionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            cropStart();
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            cropAction?.Invoke();
+
+            if (imageCroppingBox1.Visible)
+                imageCroppingBox1.Invalidate();
+        }
+
+        private void cancelselectionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            imageCroppingBox1.Clear();
+            imageCroppingBox1.Hide();
+            timer2.Stop();
         }
     }
 }

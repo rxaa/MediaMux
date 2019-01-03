@@ -99,6 +99,9 @@
     <Compile Include="dfv\Ext.cs" />
     <Compile Include="dfv\FFmpeg.cs" />
     <Compile Include="dfv\FFplay.cs" />
+    <Compile Include="dfv\ImageCroppingBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="dfv\LangDfv.cs" />
     <Compile Include="dfv\ListViewExt.cs" />
     <Compile Include="dfv\MediaStream.cs" />

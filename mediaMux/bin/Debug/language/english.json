@@ -129,6 +129,8 @@
   "Please_input_time": "Please input time.",
   "next_frame": "Next frame (F)",
   "copy_timestamp": "Copy timestamp",
+  "make_selection": "Make selection",
+  "cancel_selection": "Cancel selection",
   "effect": "effect",
   "time": "time",
   "loop": "loop",

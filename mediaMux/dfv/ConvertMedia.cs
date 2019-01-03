@@ -253,10 +253,12 @@ namespace df
     {
         [DisplayNameDf("crop")]
         [DescriptionDf("crop_descr")]
+        [EditorAttribute(typeof(PropertyGridVideoCrop), typeof(System.Drawing.Design.UITypeEditor))]
         public FilterCrop crop { get; set; } = new FilterCrop();
 
         [DisplayNameDf("scale")]
         [DescriptionDf("scale_descr")]
+        [EditorAttribute(typeof(PropertyGridVideoCrop), typeof(System.Drawing.Design.UITypeEditor))]
         public FilterScale scale { get; set; } = new FilterScale();
 
 
@@ -279,6 +281,7 @@ namespace df
 
         [DisplayNameDf("delogo")]
         [DescriptionDf("delogo_descr")]
+        [EditorAttribute(typeof(PropertyGridVideoCrop), typeof(System.Drawing.Design.UITypeEditor))]
         public FilterCrop delogo { get; set; } = new FilterCrop();
 
         [DisplayNameDf("denoise")]
@@ -376,7 +379,8 @@ namespace df
         public string gamma_weight { get; set; } = "";
     }
 
-    [TypeConverterAttribute(typeof(SubClassConverter))]
+    
+    [TypeConverterAttribute(typeof(SubClassJSONConverter))]
     public class FilterCrop
     {
         [DisplayNameDf("x")]
@@ -397,7 +401,8 @@ namespace df
         public string h { get; set; } = "";
     }
 
-    [TypeConverterAttribute(typeof(SubClassConverter))]
+
+    [TypeConverterAttribute(typeof(SubClassJSONConverter))]
     public class FilterPad
     {
 
@@ -423,7 +428,7 @@ namespace df
 
     }
 
-    [TypeConverterAttribute(typeof(SubClassConverter))]
+    [TypeConverterAttribute(typeof(SubClassJSONConverter))]
     public class FilterScale
     {
         [DescriptionDf("wh_descr")]

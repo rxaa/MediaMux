@@ -327,9 +327,11 @@ namespace MediaMux
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            flowLayoutPanelProp.Enabled = false;
+#if DEBUG
 
-            var dd = new Dictionary<string, string>();
+#endif
+
+            flowLayoutPanelProp.Enabled = false;
 
             comboBoxCon.Items.AddRange(new string[] { com.lang.dat.Dont_change, "mkv", "mp4" });
             comboBoxCon.SelectedIndex = 0;
@@ -960,17 +962,17 @@ namespace MediaMux
 
             var edit = new FormEditProperty();
             edit.setObj(ff.parameters, ff);
-            if (edit.StartEdit())
+            edit.StartEdit(() =>
             {
-
                 //ff.parameters = JsonConvert.DeserializeAnonymousType(edit.EditText, ff.parameters);
-            }
+                if (ff.parameters.concat != "" || ff.parameters.overlay.position != "" || ff.parameters.mix_audio != "")
+                {
+                    if (!ff.isPic())
+                        disableFile(index);
+                }
+            });
 
-            if (ff.parameters.concat != "" || ff.parameters.overlay.position != "" || ff.parameters.mix_audio != "")
-            {
-                if (!ff.isPic())
-                    disableFile(index);
-            }
+
         }
         void disableFile(int index)
         {
@@ -1232,7 +1234,7 @@ namespace MediaMux
             fp.setFilters(vf, af);
             fp.play(ff.fileName);
 
-            fp.ShowDialog();
+            fp.Show();
         }
     }
 }

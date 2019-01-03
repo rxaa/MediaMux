@@ -19,11 +19,11 @@ namespace MediaMux
             com.init(this);
 
         }
-        bool save = false;
-        public bool StartEdit()
+        Action onSaveAct = null;
+        public void StartEdit(Action onSave)
         {
-            this.ShowDialog();
-            return save;
+            onSaveAct = onSave;
+            this.Show();
         }
 
         FFmpeg ffm;
@@ -77,8 +77,13 @@ namespace MediaMux
                 var fp = new FormPlayer();
                 fp.setFilters(ffm.parameters.filters.getCMD(), ffm.parameters.audio_filters.getCMD());
                 fp.play(ffm.fileName);
-                fp.ShowDialog();
+                fp.Show();
             }
+        }
+
+        private void FormEditProperty_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            onSaveAct?.Invoke();
         }
     }
 }

@@ -153,7 +153,7 @@ namespace MediaMux
                     fp.setFilters(vf, convert.audio_filters.getCMD());
                     fp.play(ff.fileName);
 
-                    fp.ShowDialog();
+                    fp.Show();
                     break;
                 }
             }

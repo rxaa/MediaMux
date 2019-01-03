@@ -41,9 +41,11 @@ namespace df
 
         public string Please_input_two_time = "Please input at least two time stamp.";
         public string Please_input_time = "Please input time.";
-
         public string next_frame = "Next frame (F)";
         public string copy_timestamp = "Copy timestamp";
+
+        public string make_selection = "Make selection";
+        public string cancel_selection = "Cancel selection";
 
         public string effect = "effect";
         public string time = "time";

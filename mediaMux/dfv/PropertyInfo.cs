@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -74,6 +75,52 @@ namespace df
         }
     }
 
+
+    /// <summary>
+    ///  Crop Video on PropertyGrid
+    /// </summary>
+    public class PropertyGridVideoCrop : UITypeEditor
+    {
+
+        public PropertyGridVideoCrop()
+        {
+        }
+
+        public override UITypeEditorEditStyle GetEditStyle(System.ComponentModel.ITypeDescriptorContext context)
+        {
+            return UITypeEditorEditStyle.Modal;
+
+        }
+
+        public override object EditValue(System.ComponentModel.ITypeDescriptorContext context, System.IServiceProvider provider, object value)
+        {
+            var inst = context.Instance;
+            if (!(inst is FileConvertParameter))
+            {
+                var res = context.GetType().GetProperty("Parent");
+                if (res != null)
+                {
+                    var con = res.GetValue(context) as System.ComponentModel.ITypeDescriptorContext;
+                    inst = con.Instance;
+                }
+            }
+
+            if (inst is FileConvertParameter)
+            {
+                var para = inst as FileConvertParameter;
+                var fp = new FormPlayer();
+                if (fp.crop(para.fileName))
+                {
+                    return JsonConvert.DeserializeObject(fp.getSelectedRectStr(), value.GetType());
+                }
+            }
+
+            return value;
+
+        }
+
+    }
+
     /// <summary>
     ///  Show Video on PropertyGrid
     /// </summary>
@@ -98,7 +145,7 @@ namespace df
             {
                 var para = context.Instance as FileConvertParameter;
                 var fp = new FormPlayer();
-                var time=fp.selectTime(para.fileName);
+                var time = fp.selectTime(para.fileName);
                 if (time != "")
                     return time;
             }
@@ -354,6 +401,56 @@ namespace df
         }
     }
 
+    public class SubClassJSONConverter : ExpandableObjectConverter
+    {
+        public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
+        {
+            if (context == null)
+                return false;
 
+            if (sourceType == typeof(string))
+                return true;
+            return base.CanConvertFrom(context, sourceType);
+        }
+
+        public override bool CanConvertTo(ITypeDescriptorContext context, Type destinationType)
+        {
+            if (context == null)
+                return false;
+
+            return base.CanConvertTo(context, destinationType);
+        }
+
+        public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
+        {
+            if (value is string)
+            {
+                if(value.ToString()=="")
+                    return JsonConvert.DeserializeObject("{}", context.PropertyDescriptor.PropertyType);
+                return JsonConvert.DeserializeObject(value as string, context.PropertyDescriptor.PropertyType);
+            }
+            return base.ConvertFrom(context, culture, value);
+        }
+        public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)
+        {
+            if (destinationType == typeof(string))
+            {
+                if (value != null)
+                {
+                    return "{" + value.GetType().GetProperties().JoinStr(",", it =>
+                        {
+                            var val = it.GetValue(value);
+                            if (val != null && val.ToString() != "")
+                            {
+                                return it.Name + ":" + val;
+                            }
+                            return null;
+                        }) + " }";
+                }
+                return "{ }";
+            }
+            return base.ConvertTo(context, culture, value, destinationType);
+        }
+    }
 
 }
