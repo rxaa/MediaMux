@@ -316,6 +316,9 @@ namespace df
             dfv.SetClipboard(dfv.timeToStr2(FFplay.ffplay_get_position(), false));
         }
 
+
+        int _width = 0;
+        int _height = 0;
         double cropScale = 0;
         void cropResize()
         {
@@ -325,7 +328,9 @@ namespace df
             int scr_width = pictureBox1.Width;
             int scr_height = pictureBox1.Height;
             var aspect_ratio = FFplay.ffplay_get_aspect_ratio();
-            int width = FFplay.ffplay_get_w(), height = FFplay.ffplay_get_h();
+            _width = FFplay.ffplay_get_w();
+            _height = FFplay.ffplay_get_h();
+            int width = _width, height = _height;
 
             if (width < 1 || height < 1)
                 return;
@@ -341,7 +346,7 @@ namespace df
             int y = (scr_height - height) / 2;
 
             var oldScale = cropScale;
-            cropScale = (double)FFplay.ffplay_get_w() / width;
+            cropScale = (double)_width / width;
             var newScale = oldScale / cropScale;
 
 
@@ -385,6 +390,11 @@ namespace df
         private void timer2_Tick(object sender, EventArgs e)
         {
             cropAction?.Invoke();
+
+            //if (_width > 0 && FFplay.ffplay_get_w() != _width)
+            //{
+            //    cropResize();
+            //}
 
             if (imageCroppingBox1.Visible)
                 imageCroppingBox1.Invalidate();

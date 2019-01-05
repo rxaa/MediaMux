@@ -1210,6 +1210,9 @@ namespace MediaMux
 
         private void previewToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (listViewFile.SelectedIndices.Count < 1)
+                return;
+
             var index = listViewFile.SelectedIndices[0];
 
 

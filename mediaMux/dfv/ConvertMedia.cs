@@ -831,6 +831,8 @@ namespace df
                 else
                 {
                     var val = fi.GetValue(filters);
+                    if (val == null)
+                        return null;
                     var subStr = fi.PropertyType.GetProperties().JoinStr(":", sf => sf.PropertyType == typeof(string) ? getFieldStr(sf, val) : null);
                     if (subStr != "")
                         return getFiledName(fi) + "=" + subStr;

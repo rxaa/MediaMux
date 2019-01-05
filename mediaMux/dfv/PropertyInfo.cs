@@ -452,12 +452,16 @@ namespace df
         {
             if (value is string)
             {
-                if (value.ToString() == "")
-                    return JsonConvert.DeserializeObject("{}", context.PropertyDescriptor.PropertyType);
-                return JsonConvert.DeserializeObject(value as string, context.PropertyDescriptor.PropertyType);
+                var res = JsonConvert.DeserializeObject(value as string, context.PropertyDescriptor.PropertyType);
+                if (res == null) { 
+                    res = JsonConvert.DeserializeObject("{}", context.PropertyDescriptor.PropertyType);
+                }
+                return res;
             }
             return base.ConvertFrom(context, culture, value);
         }
+
+
         public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)
         {
             if (destinationType == typeof(string))
