@@ -115,7 +115,7 @@ namespace df
             if (vf != "")
                 FFplay.ffplay_set_vf(vf);
             if (af != "")
-                FFplay.ffplay_set_vf(af);
+                FFplay.ffplay_set_af(af);
         }
 
         Action onLoad = null;
