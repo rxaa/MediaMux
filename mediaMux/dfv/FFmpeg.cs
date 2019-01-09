@@ -127,6 +127,18 @@ namespace df
             return s;
         }
 
+        public static MediaStream getAvs(string file)
+        {
+            var ext = dfv.getFileExt(file);
+            var name = Path.GetFileName(file);
+            var s = new MediaStream();
+            s.codec_long_name = "avs";
+            s.codec_name = "avs";
+            s.codec_type = "video";
+            s.fileIndex = 0;
+            return s;
+        }
+
 
         public async Task getInfo(string file)
         {
@@ -134,6 +146,13 @@ namespace df
                 throw new ExceptionFFmpeg(dfv.lang.dat.Please_add_file_name);
 
             fileName = file;
+            var ext = dfv.getFileExt(file);
+            if (ext == "avs")
+            {
+                info.format.format_name = "avs";
+                info.streams.Add(getAvs(file));
+                return;
+            }
 
             CommandTask command = new CommandTask();
             var json = "";

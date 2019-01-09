@@ -71,7 +71,7 @@ namespace df
 ‘0, send_frame’Output one frame for each frame. ‘1, send_field’Output one frame for each field. ";
 
         public string horizon_flip = "horizon flip";
-        public string vertical_flip = "vertical_flip";
+        public string vertical_flip = "vertical flip";
 
         public string scale = "scale";
         public string scale_descr = @"Scale (resize) the input video. The scale filter forces the output display aspect ratio to be the same of the input, by changing the output sample aspect ratio. 
@@ -82,7 +82,7 @@ If the input image format is different from the format requested by the next fil
 
         public string wh_descr = "Set the output video dimension.If the value is -1,it will keep the aspect ratio of the input image";
 
-        public string setsar = "setsar";
+        public string setsar = "set sar";
         public string setsar_descr = "Set the sample aspect ratio used by the filter.The parameter can be a floating point number string, an expression, or a string of the form num:den, where num and den are the numerator and denominator of the aspect ratio. If the parameter is not specified, it is assumed the value '0'. In case the form 'num:den' is used, the : character should be escaped. ";
 
         public string color_adjustment = "color adjustment";
