@@ -231,7 +231,7 @@ namespace df
             if (isAttachmentFile)
                 return codec_long_name;
 
-            var str = fileIndex + ":" + index + " " + codec_type + ": " + codec_name;
+            var str = fileIndex + ":" + index + " " + AppLanguage.getLang(codec_type) + ": " + codec_name;
             if (codec_type == "video")
                 str += " " + width + "*" + height;
 
@@ -242,7 +242,7 @@ namespace df
             str += " " + getBitRate() + " " + getLang();
 
             if (disposition.defaul == 1)
-                str += " default";
+                str += " " + dfv.lang.dat.default_;
             str += " " + getName();
             return str;
         }

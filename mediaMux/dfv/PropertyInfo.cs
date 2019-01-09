@@ -57,7 +57,57 @@ namespace df
         }
     }
 
+    public class PercentConverter : ComboBoxItemTypeConvert
+    {
+        public override Dictionary<string, object> GetConvertMap()
+        {
+            var dict = new Dictionary<string, object>() {
+                { "0" , 0 },
+                { "10" , 10 },
+                { "20" , 20 },
+                 { "30" , 30 },
+                 { "40" , 40 },
+                 { "50" , 50 },
+                 { "60" , 60 },
+                 { "70" , 70 },
+                 { "80" , 80 },
+                 { "90" , 90 },
+                 { "100" , 100 },
+            };
+            return dict;
+        }
 
+        public override bool GetStandardValuesExclusive(ITypeDescriptorContext context)
+        {
+            return false;
+        }
+    }
+
+    public class FloatConverter : ComboBoxItemTypeConvert
+    {
+        public override Dictionary<string, object> GetConvertMap()
+        {
+            var dict = new Dictionary<string, object>() {
+                { "0" , 0 },
+                { "1" , 1 },
+                { "2" , 2 },
+                { "3" , 3 },
+                { "4" , 4 },
+                { "5" ,5 },
+                { "6" , 6 },
+                { "7" , 7 },
+                { "8" , 8 },
+                { "9" , 9 },
+                { "10" , 10 },
+            };
+            return dict;
+        }
+
+        public override bool GetStandardValuesExclusive(ITypeDescriptorContext context)
+        {
+            return false;
+        }
+    }
 
     public class NumberConverter : StringConverter
     {
@@ -183,6 +233,9 @@ namespace df
 
     }
 
+
+
+
     public class PropertyGridRichText : UITypeEditor
     {
 
@@ -203,6 +256,56 @@ namespace df
                     box.Text = value as string;
                     edSvc.DropDownControl(box);
                     return box.Text;
+                }
+            }
+            return value;
+
+        }
+
+    }
+
+
+    public class PropertySlideAttribute : Attribute
+    {
+        public int defaul { get; set; } = 0;
+        public int max { get; set; } = 10;
+        public int min { get; set; } = 0;
+        public int step { get; set; } = 1;
+        public int toFloat { get; set; } = 1;
+    }
+
+    public class PropertyGridSlide : UITypeEditor
+    {
+
+        public override UITypeEditorEditStyle GetEditStyle(System.ComponentModel.ITypeDescriptorContext context)
+        {
+            return UITypeEditorEditStyle.DropDown;
+        }
+
+        public override object EditValue(System.ComponentModel.ITypeDescriptorContext context, System.IServiceProvider provider, object value)
+        {
+
+            IWindowsFormsEditorService edSvc = (IWindowsFormsEditorService)provider.GetService(typeof(IWindowsFormsEditorService));
+            if (edSvc != null)
+            {
+                if (value is string)
+                {
+                    PropertySlideAttribute att = null;
+                    for (int i = context.PropertyDescriptor.Attributes.Count - 1; i >= 0; i--)
+                    {
+                        if (context.PropertyDescriptor.Attributes[i] is PropertySlideAttribute)
+                        {
+                            att = context.PropertyDescriptor.Attributes[i] as PropertySlideAttribute;
+                            break;
+                        }
+                    }
+
+
+                    SlideText box = new SlideText();
+                    box.ValueStr = value as string;
+                    box.initFromAtt(att);
+                    edSvc.DropDownControl(box);
+                    return box.ValueStr;
                 }
             }
             return value;
@@ -453,7 +556,8 @@ namespace df
             if (value is string)
             {
                 var res = JsonConvert.DeserializeObject(value as string, context.PropertyDescriptor.PropertyType);
-                if (res == null) { 
+                if (res == null)
+                {
                     res = JsonConvert.DeserializeObject("{}", context.PropertyDescriptor.PropertyType);
                 }
                 return res;

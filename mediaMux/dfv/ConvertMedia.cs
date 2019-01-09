@@ -97,37 +97,37 @@ namespace df
         public string ext { get; set; } = "mkv";
 
 
-        [CategoryDf("audio")]
+        [CategoryDf("audio_")]
         [DisplayNameDf("audio_code")]
         [DescriptionDf("audio_code_descr")]
         [TypeConverterAttribute(typeof(AudioCodeConverter))]
         public string audio_code { get; set; } = "";
 
-        [CategoryDf("audio")]
+        [CategoryDf("audio_")]
         [DisplayNameDf("audio_bit_rate")]
         [DescriptionDf("audio_bit_rate_descr")]
         [TypeConverterAttribute(typeof(bitRatesConverter))]
         public string audio_bit_rate { get; set; } = "";
 
-        [CategoryDf("audio")]
+        [CategoryDf("audio_")]
         [DisplayNameDf("audio_quality")]
         [DescriptionDf("audio_quality_descr")]
         [TypeConverterAttribute(typeof(NumberConverter))]
         public string audio_quality { get; set; } = "";
 
-        [CategoryDf("audio")]
+        [CategoryDf("audio_")]
         [DisplayNameDf("audio_channels")]
         [DescriptionDf("audio_channels_descr")]
         [TypeConverterAttribute(typeof(audio_channelsConverter))]
         public string audio_channels { get; set; } = "";
 
-        [CategoryDf("audio")]
+        [CategoryDf("audio_")]
         [DisplayNameDf("audio_sample_rate")]
         [DescriptionDf("audio_sample_rate_descr")]
         [TypeConverterAttribute(typeof(audio_sample_rateConverter))]
         public string audio_sample_rate { get; set; } = "";
 
-        [CategoryDf("video")]
+        [CategoryDf("video_")]
         [DisplayNameDf("video_code")]
         [DescriptionDf("video_code_descr")]
         [TypeConverterAttribute(typeof(CodeVideosConverter))]
@@ -142,13 +142,13 @@ namespace df
             }
         }
 
-        [CategoryDf("video")]
+        [CategoryDf("video_")]
         [DisplayNameDf("video_crf")]
         [DescriptionDf("video_crf_descr")]
         [TypeConverterAttribute(typeof(crfConverter))]
         public int video_crfs { get; set; } = 0;
 
-        [CategoryDf("video")]
+        [CategoryDf("video_")]
         [DisplayNameDf("preset")]
         [DescriptionDf("preset_descr")]
         [ConvertAttribute(name = "-preset", hasIndex = true)]
@@ -156,22 +156,22 @@ namespace df
         public string preset { get; set; } = "";
 
 
-        [CategoryDf("video")]
+        [CategoryDf("video_")]
         [DisplayNameDf("video_bit_rate")]
         [DescriptionDf("video_bit_rate_descr")]
         public string video_bit_rate { get; set; } = "";
 
-        [CategoryDf("video")]
+        [CategoryDf("video_")]
         [DisplayNameDf("video_max_bit_rate")]
         [DescriptionDf("video_max_bit_rate_descr")]
         public string video_max_bit_rate { get; set; } = "";
 
-        [CategoryDf("video")]
+        [CategoryDf("video_")]
         [DisplayNameDf("video_buffer_size")]
         [DescriptionDf("video_buffer_size_descr")]
         public string video_buffer_size { get; set; } = "";
 
-        [CategoryDf("video")]
+        [CategoryDf("video_")]
         [DisplayNameDf("video_display_size")]
         [DescriptionDf("video_display_size_descr")]
         [TypeConverterAttribute(typeof(CodeSizesConverter))]
@@ -180,28 +180,28 @@ namespace df
         /// </summary>
         public string video_display_size { get; set; } = "";
 
-        [CategoryDf("video")]
+        [CategoryDf("video_")]
         [DisplayNameDf("video_fps")]
         [DescriptionDf("video_fps_descr")]
         [ConvertAttribute(name = "-r", hasIndex = true)]
         [TypeConverterAttribute(typeof(FPSlistConverter))]
         public string video_fps { get; set; } = "";
 
-        [CategoryDf("video")]
+        [CategoryDf("video_")]
         [DisplayNameDf("video_pixel_format")]
         [DescriptionDf("video_pixel_format_descr")]
         [ConvertAttribute(name = "-pix_fmt", hasIndex = true)]
         [TypeConverterAttribute(typeof(codePixelFormatsConverter))]
         public string video_pixel_format { get; set; } = "";
 
-        [CategoryDf("video")]
+        [CategoryDf("video_")]
         [DisplayNameDf("video_tune")]
         [DescriptionDf("video_tune_descr")]
         [ConvertAttribute(name = "-tune", hasIndex = true)]
         [TypeConverterAttribute(typeof(codeTunesConverter))]
         public string video_tune { get; set; } = "";
 
-        [CategoryDf("video")]
+        [CategoryDf("video_")]
         [DisplayNameDf("display_aspect_ratio")]
         [DescriptionDf("display_aspect_ratio_descr")]
         [ConvertAttribute(name = "-aspect", hasIndex = true)]
@@ -209,26 +209,26 @@ namespace df
         public string display_aspect_ratio { get; set; } = "";
 
 
-        [CategoryDf("video")]
+        [CategoryDf("video_")]
         [DisplayNameDf("profile")]
         [DescriptionDf("profile_descr")]
         [ConvertAttribute(name = "-profile", hasIndex = true)]
         [TypeConverterAttribute(typeof(ProfileConverter))]
         public string profile { get; set; } = "";
 
-        [CategoryDf("video")]
+        [CategoryDf("video_")]
         [DisplayNameDf("level")]
         [DescriptionDf("level_descr")]
         [ConvertAttribute(name = "-level", hasIndex = true)]
         [TypeConverterAttribute(typeof(LevelConverter))]
         public string level { get; set; } = "";
 
-        [CategoryDf("video")]
+        [CategoryDf("video_")]
         [DisplayNameDf("x26x_params")]
         [DescriptionDf("x26x_params_descr")]
         public x26xParams x26x_params { get; set; } = new x26xParams();
 
-        [CategoryDf("video")]
+        [CategoryDf("video_")]
         [DisplayNameDf("x265_params")]
         [DescriptionDf("x265_params_descr")]
         public x265Params x265_params { get; set; } = new x265Params();
@@ -322,6 +322,7 @@ namespace df
 
         [DisplayNameDf("setsar")]
         [DescriptionDf("setsar_descr")]
+        [TypeConverterAttribute(typeof(SarConverter))]
         public string setsar { get; set; } = "";
 
         //[DisplayNameDf("command_line")]
@@ -361,14 +362,18 @@ namespace df
     {
         [DisplayNameDf("luma_amount")]
         [DescriptionDf("luma_amount_descr")]
+        [PropertySlide(defaul = 0, max = 150, min = -150, step = 1, toFloat = 100)]
+        [EditorAttribute(typeof(PropertyGridSlide), typeof(System.Drawing.Design.UITypeEditor))]
         public string luma_amount { get; set; } = "";
 
         [DisplayNameDf("luma_msize_x")]
         [DescriptionDf("luma_msize_x_descr")]
+        [TypeConverterAttribute(typeof(LumaSizeConverter))]
         public string luma_msize_x { get; set; } = "";
 
         [DisplayNameDf("luma_msize_y")]
         [DescriptionDf("luma_msize_y_descr")]
+        [TypeConverterAttribute(typeof(LumaSizeConverter))]
         public string luma_msize_y { get; set; } = "";
 
     }
@@ -378,33 +383,48 @@ namespace df
     {
         [DisplayNameDf("contrast")]
         [DescriptionDf("contrast_descr")]
+        //[TypeConverterAttribute(typeof(NumberConverter))]
+        [PropertySlide(defaul = 100, max = 200, min = 0, step = 1, toFloat = 100)]
+        [EditorAttribute(typeof(PropertyGridSlide), typeof(System.Drawing.Design.UITypeEditor))]
         public string contrast { get; set; } = "";
 
         [DisplayNameDf("brightness")]
         [DescriptionDf("brightness_descr")]
+        [PropertySlide(defaul = 0, max = 100, min = -100, step = 1, toFloat = 100)]
+        [EditorAttribute(typeof(PropertyGridSlide), typeof(System.Drawing.Design.UITypeEditor))]
         public string brightness { get; set; } = "";
 
         [DisplayNameDf("saturation")]
         [DescriptionDf("saturation_descr")]
+        [PropertySlide(defaul = 100, max = 300, min = 0, step = 1, toFloat = 100)]
+        [EditorAttribute(typeof(PropertyGridSlide), typeof(System.Drawing.Design.UITypeEditor))]
         public string saturation { get; set; } = "";
 
         [DisplayNameDf("gamma_red")]
         [DescriptionDf("gamma_red_descr")]
         [ConvertAttribute(name = "gamma_r")]
+        [PropertySlide(defaul = 100, max = 500, min = 1, step = 1, toFloat = 100)]
+        [EditorAttribute(typeof(PropertyGridSlide), typeof(System.Drawing.Design.UITypeEditor))]
         public string gamma_red { get; set; } = "";
 
         [DisplayNameDf("gamma_green")]
         [DescriptionDf("gamma_green_descr")]
         [ConvertAttribute(name = "gamma_g")]
+        [PropertySlide(defaul = 100, max = 500, min = 1, step = 1, toFloat = 100)]
+        [EditorAttribute(typeof(PropertyGridSlide), typeof(System.Drawing.Design.UITypeEditor))]
         public string gamma_green { get; set; } = "";
 
         [DisplayNameDf("gamma_blue")]
         [DescriptionDf("gamma_blue_descr")]
         [ConvertAttribute(name = "gamma_b")]
+        [PropertySlide(defaul = 100, max = 500, min = 1, step = 1, toFloat = 100)]
+        [EditorAttribute(typeof(PropertyGridSlide), typeof(System.Drawing.Design.UITypeEditor))]
         public string gamma_blue { get; set; } = "";
 
         [DisplayNameDf("gamma_weight")]
         [DescriptionDf("gamma_weight_descr")]
+        [PropertySlide(defaul = 100, max = 100, min = 0, step = 1, toFloat = 100)]
+        [EditorAttribute(typeof(PropertyGridSlide), typeof(System.Drawing.Design.UITypeEditor))]
         public string gamma_weight { get; set; } = "";
     }
 
@@ -655,11 +675,15 @@ namespace df
         [DisplayNameDf("tempo")]
         [DescriptionDf("tempo_descr")]
         [ConvertAttribute(name = "atempo")]
+        [PropertySlide(defaul = 10, max = 100, min = 5, step = 1, toFloat = 10)]
+        [EditorAttribute(typeof(PropertyGridSlide), typeof(System.Drawing.Design.UITypeEditor))]
         public string tempo { get; set; } = "";
 
         [DisplayNameDf("volume")]
         [DescriptionDf("volume_descr")]
         [ConvertAttribute(name = "volume")]
+        [PropertySlide(defaul = 10, max = 100, min = 1, step = 1, toFloat = 10)]
+        [EditorAttribute(typeof(PropertyGridSlide), typeof(System.Drawing.Design.UITypeEditor))]
         public string volume { get; set; } = "";
 
         [DisplayNameDf("dynaudnorm")]
@@ -679,43 +703,43 @@ namespace df
     {
         [DisplayNameDf("mix_audio")]
         [DescriptionDf("mix_audio_descr")]
-        [CategoryDf("audio")]
+        [CategoryDf("audio_")]
         [TypeConverterAttribute(typeof(YesNoConverter))]
         public string mix_audio { get; set; } = "";
 
         [DisplayNameDf("mix_shortest")]
         [DescriptionDf("mix_shortest_descr")]
-        [CategoryDf("audio")]
+        [CategoryDf("audio_")]
         [TypeConverterAttribute(typeof(YesNoConverter))]
         public string mix_shortest { get; set; } = "";
 
         [DisplayNameDf("audio_filters")]
         [DescriptionDf("audio_filters_descr")]
-        [CategoryDf("audio")]
+        [CategoryDf("audio_")]
         public AudioFilter audio_filters { get; set; } = new AudioFilter();
 
 
         [DisplayNameDf("fade_in")]
         [DescriptionDf("duration_descr")]
         [TypeConverterAttribute(typeof(TimeConverter))]
-        [CategoryDf("video")]
+        [CategoryDf("video_")]
         public string fade_in { get; set; } = "";
 
         [DisplayNameDf("fade_out")]
         [DescriptionDf("duration_descr")]
         [TypeConverterAttribute(typeof(TimeConverter))]
-        [CategoryDf("video")]
+        [CategoryDf("video_")]
         public string fade_out { get; set; } = "";
 
         [DisplayNameDf("overlay")]
         [DescriptionDf("overlay_descr")]
-        [CategoryDf("video")]
+        [CategoryDf("video_")]
         public ImageOverlay overlay { get; set; } = new ImageOverlay();
 
 
         [DisplayNameDf("filters")]
         [DescriptionDf("filters_descr")]
-        [CategoryDf("video")]
+        [CategoryDf("video_")]
         public VideoFilter filters { get; set; } = new VideoFilter();
 
         [DisplayNameDf("start_time")]

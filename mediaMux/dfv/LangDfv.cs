@@ -108,8 +108,12 @@ Note that this filter only supports float samples. If the amix input has integer
         public string mix_shortest_descr = "Use the duration of shortest input as the end-of-stream.";
 
 
-        public string audio = "0.audio";
-        public string video = "1.video";
+        public string audio = "audio";
+        public string video = "video";
+        public string subtitle = "subtitle";
+        public string attachment = "attachment";
+        public string audio_ = "1.audio";
+        public string video_ = "2.video";
 
         public string About = "About";
         public string version = "version";
@@ -140,7 +144,7 @@ Note that this filter only supports float samples. If the amix input has integer
         public string video_fps = "video fps";
         public string video_fps_descr = "Set frame rate (Hz value, fraction or abbreviation). ";
         public string video_pixel_format = "video pixel format";
-        public string video_pixel_format_descr = "";
+        public string video_pixel_format_descr = " '10le' indicating '10 bit little end'";
         public string video_tune = "video tune";
         public string video_tune_descr = "";
         public string display_aspect_ratio = "display aspect ratio";
@@ -188,7 +192,7 @@ QP curve compression. h264: 0.0 => CBR, 1.0 => CQP. h265: 0.5 - 1.0";
         public string gamma_weight = "gamma weight";
         public string gamma_weight_descr = "Set the gamma weight expression. It can be used to reduce the effect of a high gamma value on bright image areas, e.g. keep them from getting overamplified and just plain white. The value must be a float in range 0.0 to 1.0. A value of 0.0 turns the gamma correction all the way down while 1.0 leaves it at its full strength. Default is '1'. ";
         public string luma_amount = "luma amount";
-        public string luma_amount_descr = "Default value is 1.0. reasonable values lay between -1.5 and 1.5. Negative values will blur the input video, while positive values will sharpen it, a value of zero will disable the effect. ";
+        public string luma_amount_descr = "Negative values will blur the input video, while positive values will sharpen it, a value of zero will disable the effect. ";
         public string luma_msize_x = "luma matrix size x";
         public string luma_msize_x_descr = "Set the luma matrix horizontal size. It must be an odd integer between 3 and 23. The default value is 5. ";
         public string luma_msize_y = "luma matrix size y";

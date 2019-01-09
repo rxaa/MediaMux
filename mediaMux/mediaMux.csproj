@@ -111,6 +111,9 @@
     </Compile>
     <Compile Include="dfv\ObjectFile.cs" />
     <Compile Include="dfv\PropertyInfo.cs" />
+    <Compile Include="dfv\SlideText.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="dfv\sys.cs" />
     <Compile Include="dfv\TaskBar.cs" />
     <Compile Include="FormCommand.cs">
@@ -170,6 +173,9 @@
     <Compile Include="LanguageFile.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="dfv\SlideText.resx">
+      <DependentUpon>SlideText.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormCommand.resx">
       <DependentUpon>FormCommand.cs</DependentUpon>
     </EmbeddedResource>
