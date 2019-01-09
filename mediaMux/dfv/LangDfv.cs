@@ -144,7 +144,7 @@ Note that this filter only supports float samples. If the amix input has integer
         public string video_fps = "video fps";
         public string video_fps_descr = "Set frame rate (Hz value, fraction or abbreviation). ";
         public string video_pixel_format = "video pixel format";
-        public string video_pixel_format_descr = " '10le' indicating '10 bit little end'";
+        public string video_pixel_format_descr = " '10le' indicating '10 bit little-endian'";
         public string video_tune = "video tune";
         public string video_tune_descr = "";
         public string display_aspect_ratio = "display aspect ratio";
@@ -306,5 +306,13 @@ Alternatively, the options can be specified as a flat string: strength[:radius]"
         public string out_h_descr = "Set the output height expression, default value is 'ih'. This expression is evaluated just once during configuration.";
         public string fillcolor = "fill color";
         public string fillcolor_descr = "Set the color used to fill the output area not covered by the rotated image.";
+
+
+        public string setpts = "set pts";
+        public string setpts_descr = "Change the PTS (presentation timestamp) of the input frames.";
+
+        public string rd_descr = "Level of RDO in mode decision. The higher the value, the more exhaustive the analysis and the more rate distortion optimization is used. The lower the value the faster the encode, the higher the value the smaller the bitstream (in general). Default 3";
+        public string ctu_descr = "Maximum CU size (width and height). The larger the maximum CU size, the more efficiently x265 can encode flat areas of the picture, giving large reductions in bitrate. However this comes at a loss of parallelism with fewer rows of CUs that can be encoded in parallel, and less frame parallelism as well. Because of this the faster presets use a CU size of 32. Default: 64";
+        public string scenecut_descr = "How aggressively I-frames need to be inserted. The higher the threshold value, the more aggressive the I-frame placement. --scenecut 0 disables adaptive I frame placement. Default 40";
     }
 }

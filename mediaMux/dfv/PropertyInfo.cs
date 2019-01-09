@@ -264,6 +264,29 @@ namespace df
 
     }
 
+    public class PropertyListAttribute : Attribute
+    {
+        public string[] list { get; set; } = new string[] { };
+        public bool exclusive { get; set; } = true;
+    }
+
+    public class ListConverter : StringConverter
+    {
+        public override bool GetStandardValuesSupported(ITypeDescriptorContext context)
+        {
+            return true;
+        }
+        public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
+        {
+            var list = context.PropertyDescriptor.Attributes.Find<PropertyListAttribute>();
+            return new StandardValuesCollection(list.list);
+        }
+        public override bool GetStandardValuesExclusive(ITypeDescriptorContext context)
+        {
+            var list = context.PropertyDescriptor.Attributes.Find<PropertyListAttribute>();
+            return list.exclusive;
+        }
+    }
 
     public class PropertySlideAttribute : Attribute
     {
@@ -290,17 +313,7 @@ namespace df
             {
                 if (value is string)
                 {
-                    PropertySlideAttribute att = null;
-                    for (int i = context.PropertyDescriptor.Attributes.Count - 1; i >= 0; i--)
-                    {
-                        if (context.PropertyDescriptor.Attributes[i] is PropertySlideAttribute)
-                        {
-                            att = context.PropertyDescriptor.Attributes[i] as PropertySlideAttribute;
-                            break;
-                        }
-                    }
-
-
+                    PropertySlideAttribute att = context.PropertyDescriptor.Attributes.Find<PropertySlideAttribute>();
                     SlideText box = new SlideText();
                     box.ValueStr = value as string;
                     box.initFromAtt(att);

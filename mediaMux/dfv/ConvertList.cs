@@ -405,4 +405,22 @@ namespace df
             return false;
         }
     }
+
+    public class PTSConverter : StringConverter
+    {
+        public override bool GetStandardValuesSupported(ITypeDescriptorContext context)
+        {
+            return true;
+        }
+        public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
+        {
+            return new StandardValuesCollection(new string[] { "", "0.1*PTS", "0.5*PTS", "0.6*PTS", "0.8*PTS", "1*PTS", "1.1*PTS", "1.5*PTS", "2*PTS" });
+        }
+        public override bool GetStandardValuesExclusive(ITypeDescriptorContext context)
+        {
+            return false;
+        }
+    }
+
+   
 }

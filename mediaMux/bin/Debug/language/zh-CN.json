@@ -319,5 +319,10 @@
   "out_h": "输出高度",
   "out_h_descr": "设置输出高度表达式,  默认值为 'ih'. This expression is evaluated just once during configuration.",
   "fillcolor": "背景颜色",
-  "fillcolor_descr": "设置用于填充的背景颜色."
+  "fillcolor_descr": "设置用于填充的背景颜色.",
+  "setpts": "速率(pts)",
+  "setpts_descr": "Change the PTS (presentation timestamp) of the input frames.",
+  "rd_descr": "Level of RDO in mode decision. The higher the value, the more exhaustive the analysis and the more rate distortion optimization is used. The lower the value the faster the encode, the higher the value the smaller the bitstream (in general). Default 3",
+  "ctu_descr": "Maximum CU size (width and height). The larger the maximum CU size, the more efficiently x265 can encode flat areas of the picture, giving large reductions in bitrate. However this comes at a loss of parallelism with fewer rows of CUs that can be encoded in parallel, and less frame parallelism as well. Because of this the faster presets use a CU size of 32. Default: 64",
+  "scenecut_descr": "How aggressively I-frames need to be inserted. The higher the threshold value, the more aggressive the I-frame placement. --scenecut 0 disables adaptive I frame placement. Default 40"
 }

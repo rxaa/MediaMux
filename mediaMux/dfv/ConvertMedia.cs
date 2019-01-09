@@ -252,6 +252,12 @@ namespace df
     [TypeConverterAttribute(typeof(SubClassConverter))]
     public class VideoFilter
     {
+        [DisplayNameDf("setpts")]
+        [DescriptionDf("setpts_descr")]
+        [ConvertAttribute(name = "setpts")]
+        [TypeConverterAttribute(typeof(PTSConverter))]
+        public string setpts { get; set; } = "";
+
         [DisplayNameDf("crop")]
         [DescriptionDf("crop_descr")]
         [EditorAttribute(typeof(PropertyGridVideoCrop), typeof(System.Drawing.Design.UITypeEditor))]
@@ -375,7 +381,6 @@ namespace df
         [DescriptionDf("luma_msize_y_descr")]
         [TypeConverterAttribute(typeof(LumaSizeConverter))]
         public string luma_msize_y { get; set; } = "";
-
     }
 
     [TypeConverterAttribute(typeof(SubClassConverter))]
@@ -516,13 +521,25 @@ namespace df
     {
         [DescriptionDf("keyint_max_descr")]
         [ConvertAttribute(name = "keyint")]
+        [PropertySlide(defaul = 250, max = 600, min = 1, step = 1, toFloat = 1)]
+        [EditorAttribute(typeof(PropertyGridSlide), typeof(System.Drawing.Design.UITypeEditor))]
         public string keyint_max { get; set; } = "";
 
         [DescriptionDf("keyint_min_descr")]
         [ConvertAttribute(name = "keyint_min", x265name = "min-keyint")]
+        [PropertySlide(defaul = 0, max = 250, min = 0, step = 1, toFloat = 1)]
+        [EditorAttribute(typeof(PropertyGridSlide), typeof(System.Drawing.Design.UITypeEditor))]
         public string keyint_min { get; set; } = "";
 
+        [DescriptionDf("scenecut_descr")]
+        [ConvertAttribute(name = "scenecut")]
+        [PropertySlide(defaul = 40, max = 100, min = 0, step = 1, toFloat = 1)]
+        [EditorAttribute(typeof(PropertyGridSlide), typeof(System.Drawing.Design.UITypeEditor))]
+        public string scenecut { get; set; } = "";
+
         [DescriptionDf("bframes_descr")]
+        [PropertySlide(defaul = 4, max = 16, min = 0, step = 1, toFloat = 1)]
+        [EditorAttribute(typeof(PropertyGridSlide), typeof(System.Drawing.Design.UITypeEditor))]
         public string bframes { get; set; } = "";
 
         [DescriptionDf("qpmax_descr")]
@@ -536,7 +553,6 @@ namespace df
 
         [DescriptionDf("qpstep_descr")]
         public string qpstep { get; set; } = "";
-
 
         [DescriptionDf("rc_lookahead_descr")]
         [ConvertAttribute(name = "rc_lookahead", x265name = "rc-lookahead")]
@@ -558,7 +574,6 @@ namespace df
         [DescriptionDf("deblock_descr")]
         public string deblock { get; set; } = "";
 
-
         [DescriptionDf("aq_mode_descr")]
         [ConvertAttribute(x265name = "aq-mode")]
         public string aq_mode { get; set; } = "";
@@ -575,18 +590,29 @@ namespace df
     [TypeConverterAttribute(typeof(SubClassConverter))]
     public class x265Params
     {
-
         [TypeConverter(typeof(YesNoDefaultConverter))]
         [DescriptionDf("pmode_descr")]
         [ConvertAttribute(name = "pmode", yesNoValue = true)]
         public string pmode { get; set; } = "";
 
 
+        [PropertyList(list = new string[] { "", "0", "1", "2", "3", "4", "5", "6" }, exclusive = false)]
+        [TypeConverter(typeof(ListConverter))]
+        [DescriptionDf("rd_descr")]
+        [ConvertAttribute(name = "rd")]
+        public string rd { get; set; } = "";
+
+        [PropertyList(list = new string[] { "", "64", "32", "16" }, exclusive = false)]
+        [TypeConverter(typeof(ListConverter))]
+        [DescriptionDf("ctu_descr")]
+        [ConvertAttribute(name = "ctu")]
+        public string ctu { get; set; } = "";
+
+
         [TypeConverter(typeof(YesNoDefaultConverter))]
         [DescriptionDf("sao_descr")]
         [ConvertAttribute(name = "sao", yesNoValue = true)]
         public string sao { get; set; } = "";
-
 
 
         [TypeConverter(typeof(YesNoDefaultConverter))]

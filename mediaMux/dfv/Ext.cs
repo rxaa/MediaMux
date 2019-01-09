@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Linq.Expressions;
@@ -33,6 +34,19 @@ namespace df
             catch (Exception)
             {
             }
+        }
+
+
+        public static T Find<T>(this AttributeCollection atts) where T : Attribute
+        {
+            for (int i = atts.Count - 1; i >= 0; i--)
+            {
+                if (atts[i] is T)
+                {
+                    return atts[i] as T;
+                }
+            }
+            return null;
         }
 
         /// <summary>
@@ -122,7 +136,8 @@ namespace df
             foreach (var a in source)
             {
                 var ss = func(a);
-                if (ss != null) { 
+                if (ss != null)
+                {
                     ret += ss + op;
                 }
             }
