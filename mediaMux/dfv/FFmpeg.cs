@@ -198,7 +198,7 @@ namespace df
 
             var newFile = fileName + "_%d" + "." + ext;
             var cmd = "";
-            if (mode == 0)
+            if (mode == 1)
             {
                 var times = time.Replace("\r", "").Split('\n');
                 if (times.Length < 1)
