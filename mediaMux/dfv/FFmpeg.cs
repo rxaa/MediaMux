@@ -120,8 +120,8 @@ namespace df
             s.codec_long_name = file;
             s.codec_name = MimeType.GetMimeType(ext);
             s.codec_type = "attachment";
-            s.tags["filename"] = name;
-            s.tags["mimetype"] = s.codec_name;
+            s.tagsEdit["filename"] = name;
+            s.tagsEdit["mimetype"] = s.codec_name;
             s.isAttachmentFile = true;
             s.fileIndex = 0;
             return s;
@@ -306,7 +306,7 @@ namespace df
         string getMetadata(MediaStream s, int streamI)
         {
             var res = "";
-            s.tags2.ForEach(v =>
+            s.tagsEdit.ForEach(v =>
             {
                 if (v.Key != "" && v.Key != null && v.Value != s.tags.GetStrVal(v.Key))
                     res += " -metadata:s:" + streamI + " " + v.Key + "=\"" + v.Value + "\" ";

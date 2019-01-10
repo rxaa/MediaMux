@@ -31,7 +31,7 @@ namespace df
             {
                 var m = s.ToObject<MediaStream>();
                 m.streamObj = s;
-                m.tags2 = new Dictionary<string, string>(m.tags);
+                m.tagsEdit = new Dictionary<string, string>(m.tags);
                 m.disposition2 = m.disposition.Clone();
                 mf.streams.Add(m);
             });
@@ -136,7 +136,7 @@ namespace df
         /// record edit result
         /// </summary>
         [JsonIgnore]
-        public Dictionary<string, string> tags2 { get; set; } = new Dictionary<string, string>();
+        public Dictionary<string, string> tagsEdit { get; set; } = new Dictionary<string, string>();
 
         [JsonIgnore]
         public JObject streamObj { get; set; } = new JObject();

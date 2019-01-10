@@ -42,7 +42,7 @@ namespace df
             "119.88",
             "120"
         };
-        public static string[] extAudios = new string[] { "m4a", "mp3", "ogg", "flac" };
+        public static string[] extAudios = new string[] { "mka", "m4a", "mp3", "ogg", "flac" };
         public static string[] extVideos = new string[] { "mkv", "mp4", "mov", "flv", "avi" };
 
         public static string[] codeAudios = new string[] { "aac", "mp3", "ac3", "flac", "opus", "vorbis" };

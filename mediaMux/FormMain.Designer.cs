@@ -84,6 +84,7 @@
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.viewdetailsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.editparamsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.previewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonClear = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -112,7 +113,6 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.saveasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ExtractToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.edittagsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.progressBarProc = new System.Windows.Forms.ProgressBar();
             this.labelProc = new System.Windows.Forms.Label();
@@ -120,7 +120,6 @@
             this.label15 = new System.Windows.Forms.Label();
             this.flowLayoutPanelProp = new System.Windows.Forms.FlowLayoutPanel();
             this.button2 = new System.Windows.Forms.Button();
-            this.previewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -698,6 +697,13 @@
             this.editparamsToolStripMenuItem.Text = "Edit_parameters";
             this.editparamsToolStripMenuItem.Click += new System.EventHandler(this.editparamsToolStripMenuItem_Click);
             // 
+            // previewToolStripMenuItem
+            // 
+            this.previewToolStripMenuItem.Name = "previewToolStripMenuItem";
+            this.previewToolStripMenuItem.Size = new System.Drawing.Size(222, 24);
+            this.previewToolStripMenuItem.Text = "Preview";
+            this.previewToolStripMenuItem.Click += new System.EventHandler(this.previewToolStripMenuItem_Click);
+            // 
             // buttonAdd
             // 
             this.buttonAdd.Location = new System.Drawing.Point(91, 37);
@@ -862,19 +868,18 @@
             // 
             this.contextMenuStripStream.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStripStream.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addattatchmentToolStripMenuItem,
-            this.removeattachmentToolStripMenuItem,
-            this.toolStripSeparator3,
             this.selectallToolStripMenuItem,
             this.disableallToolStripMenuItem,
             this.viewdetailsToolStripMenuItem,
+            this.edittagsToolStripMenuItem,
             this.toolStripSeparator1,
             this.saveasToolStripMenuItem,
             this.ExtractToolStripMenuItem,
-            this.toolStripSeparator2,
-            this.edittagsToolStripMenuItem});
+            this.toolStripSeparator3,
+            this.addattatchmentToolStripMenuItem,
+            this.removeattachmentToolStripMenuItem});
             this.contextMenuStripStream.Name = "contextMenuStripStream";
-            this.contextMenuStripStream.Size = new System.Drawing.Size(229, 214);
+            this.contextMenuStripStream.Size = new System.Drawing.Size(229, 236);
             // 
             // addattatchmentToolStripMenuItem
             // 
@@ -935,11 +940,6 @@
             this.ExtractToolStripMenuItem.Size = new System.Drawing.Size(228, 24);
             this.ExtractToolStripMenuItem.Text = "Extract_file";
             this.ExtractToolStripMenuItem.Click += new System.EventHandler(this.ExtractToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(225, 6);
             // 
             // edittagsToolStripMenuItem
             // 
@@ -1013,13 +1013,6 @@
             this.button2.Text = "...";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // previewToolStripMenuItem
-            // 
-            this.previewToolStripMenuItem.Name = "previewToolStripMenuItem";
-            this.previewToolStripMenuItem.Size = new System.Drawing.Size(222, 24);
-            this.previewToolStripMenuItem.Text = "Preview";
-            this.previewToolStripMenuItem.Click += new System.EventHandler(this.previewToolStripMenuItem_Click);
             // 
             // FormMain
             // 
@@ -1127,7 +1120,6 @@
         private System.Windows.Forms.ToolStripMenuItem edittagsToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.CheckBox checkBoxConvertAllAudio;
         private System.Windows.Forms.Label label7;

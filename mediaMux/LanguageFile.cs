@@ -48,7 +48,7 @@ namespace MediaMux
         public string Select_all = "Select all";
         public string Disable_all = "Disable all";
         public string Default_ = "Default:";
-        public string Add_attachment = "Add attachment";
+        public string Add_attachment = "Add mkv attachment";
         public string Extract_all_audio = "Extract all audio";
         public string Remove_attachment = "Remove attachment";
         public string View_details = "View details";

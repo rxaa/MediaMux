@@ -267,7 +267,7 @@ namespace MediaMux
             if (currentStreamIndex >= streamsCurrent.Count)
                 return;
 
-            if (!streamsCurrent[currentStreamIndex].tags2.GetVal(tagName, val => con.Text = val))
+            if (!streamsCurrent[currentStreamIndex].tagsEdit.GetVal(tagName, val => con.Text = val))
             {
                 con.Text = defa;
             }
@@ -279,7 +279,7 @@ namespace MediaMux
             {
                 if (currentStreamIndex >= streamsCurrent.Count)
                     return;
-                streamsCurrent[currentStreamIndex].tags2[tagName] = con.Text;
+                streamsCurrent[currentStreamIndex].tagsEdit[tagName] = con.Text;
             };
             bindEv.Add(con);
         }
@@ -707,13 +707,13 @@ namespace MediaMux
                 return;
 
             var st = streamsCurrent[currentStreamIndex];
-            var json = JsonConvert.SerializeObject(st.tags2, Formatting.Indented);
+            var json = JsonConvert.SerializeObject(st.tagsEdit, Formatting.Indented);
             var edit = new FormEdit();
             edit.verifyJson = true;
             edit.EditText = json;
             if (edit.StartEdit())
             {
-                st.tags2 = JsonConvert.DeserializeAnonymousType(edit.EditText, st.tags2);
+                st.tagsEdit = JsonConvert.DeserializeAnonymousType(edit.EditText, st.tagsEdit);
             }
         }
 
