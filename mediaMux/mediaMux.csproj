@@ -92,25 +92,29 @@
     <Compile Include="ConfigFile.cs" />
     <Compile Include="dfv\AppLanguage.cs" />
     <Compile Include="dfv\CommandTask.cs" />
-    <Compile Include="dfv\ConvertList.cs" />
-    <Compile Include="dfv\ConvertMedia.cs" />
+    <Compile Include="dfv\ffmpeg\AudioFilter.cs" />
+    <Compile Include="dfv\ffmpeg\ConvertList.cs" />
+    <Compile Include="dfv\ffmpeg\ConvertMedia.cs" />
     <Compile Include="dfv\dfv.cs" />
     <Compile Include="dfv\dfvThreadPool.cs" />
     <Compile Include="dfv\Ext.cs" />
-    <Compile Include="dfv\FFmpeg.cs" />
+    <Compile Include="dfv\ffmpeg\FFmpeg.cs" />
+    <Compile Include="dfv\ffmpeg\FileConvertParameter.cs" />
+    <Compile Include="dfv\ffmpeg\VideoFilter.cs" />
+    <Compile Include="dfv\ffmpeg\x26xParams.cs" />
     <Compile Include="dfv\FFplay.cs" />
     <Compile Include="dfv\ImageCroppingBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="dfv\LangDfv.cs" />
+    <Compile Include="dfv\ffmpeg\LangDfv.cs" />
     <Compile Include="dfv\ListViewExt.cs" />
-    <Compile Include="dfv\MediaStream.cs" />
+    <Compile Include="dfv\ffmpeg\MediaStream.cs" />
     <Compile Include="dfv\MimeType.cs" />
     <Compile Include="dfv\MyProgressBar.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="dfv\ObjectFile.cs" />
-    <Compile Include="dfv\PropertyInfo.cs" />
+    <Compile Include="dfv\ffmpeg\PropertyInfo.cs" />
     <Compile Include="dfv\SlideText.cs">
       <SubType>Component</SubType>
     </Compile>

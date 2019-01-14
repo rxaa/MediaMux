@@ -171,6 +171,7 @@ namespace MediaMux
         void progressError(string err)
         {
             labelProc.Text = err;
+            TaskbarManager.SetProgressState(TaskbarProgressBarState.NoProgress);
         }
         void progressStart(FFmpeg ff, string name, string extString = "")
         {
@@ -192,6 +193,8 @@ namespace MediaMux
 
                 this.BeginInvoke(new Action(() =>
                 {
+                    TaskbarManager.SetProgressState(TaskbarProgressBarState.Normal);
+                    TaskbarManager.SetProgressValue(progressBarProc.Value, progressBarProc.Maximum);
                     progressBarProc.Value = per;
                     var info = per + "% ";
                     if (ff.processFPS != "")
@@ -218,6 +221,7 @@ namespace MediaMux
         {
             progressBarProc.Value = 100;
             labelProc.Text = com.lang.dat.Complete;
+            TaskbarManager.SetProgressState(TaskbarProgressBarState.NoProgress);
         }
 
         async private void ExtractM4aToolStripMenuItem_Click(object sender, EventArgs e)

@@ -30,9 +30,6 @@ namespace MediaMux
         public string Number_of_files = "Number of files:";
         public string Stopped = "Stopped";
 
-     
-
-
         public string Split_mode = "Split mode:";
         public string Specific_time = "Specific time range(one time point each line)";
         public string After_duration = "After output duration(sec)";
