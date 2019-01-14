@@ -125,7 +125,7 @@ namespace df
 
         [TypeConverter(typeof(YesNoDefaultConverter))]
         [DescriptionDf("constrained_intra_descr")]
-        [ConvertAttribute(name = " constrained-intra", yesNoValue = true)]
+        [ConvertAttribute(name = "constrained-intra", yesNoValue = true)]
         public string constrained_intra { get; set; } = "";
 
 
