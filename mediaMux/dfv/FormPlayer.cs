@@ -28,6 +28,7 @@ namespace df
 
         }
 
+        const long jumpPos = 3000;
 
         int getCropVal(int val)
         {
@@ -102,11 +103,11 @@ namespace df
         {
             if (e.Delta > 0)
             {
-                FFplay.ffplay_set_position(FFplay.ffplay_get_position() - 10000);
+                FFplay.ffplay_set_position(FFplay.ffplay_get_position() - jumpPos);
             }
             else
             {
-                FFplay.ffplay_set_position(FFplay.ffplay_get_position() + 10000);
+                FFplay.ffplay_set_position(FFplay.ffplay_get_position() + jumpPos);
             }
         }
 
@@ -139,8 +140,6 @@ namespace df
                 showErr(errorStr);
             }));
         }
-
-
 
 
 
@@ -244,12 +243,12 @@ namespace df
             }
             else if (e.KeyCode == Keys.Left)
             {
-                FFplay.ffplay_set_position(FFplay.ffplay_get_position() - 10000);
+                FFplay.ffplay_set_position(FFplay.ffplay_get_position() - jumpPos);
                 e.Handled = true;
             }
             else if (e.KeyCode == Keys.Right)
             {
-                FFplay.ffplay_set_position(FFplay.ffplay_get_position() + 10000);
+                FFplay.ffplay_set_position(FFplay.ffplay_get_position() + jumpPos);
                 e.Handled = true;
             }
         }

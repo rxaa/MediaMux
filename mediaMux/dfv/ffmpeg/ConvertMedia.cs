@@ -43,16 +43,16 @@ namespace df
             "120"
         };
         public static string[] extAudios = new string[] { "mka", "m4a", "mp3", "ogg", "flac" };
-        public static string[] extVideos = new string[] { "mkv", "mp4", "mov", "flv", "avi" };
+        public static string[] extVideos = new string[] { "mkv", "mp4", "mov", "webm", "flv", "avi" };
 
         public static string[] codeAudios = new string[] { "aac", "mp3", "ac3", "flac", "opus", "vorbis" };
-        public static string[] codecVideos = new string[] { "", "h264", "h264_nvenc", "h264_qsv", "hevc", "hevc_nvenc", "hevc_qsv" };
+        public static string[] codecVideos = new string[] { "", "h264", "h264_nvenc", "h264_qsv", "hevc", "hevc_nvenc", "hevc_qsv", "vp9" };
 
         public static string[] codecVideosStr
         {
             get
             {
-                return new string[] { "", "h264", "h264_nvenc (NVIDIA NVENC)", "h264_qsv (Intel Quick Sync Video)", "hevc", "hevc_nvenc (NVIDIA NVENC)", "hevc_qsv (Intel Quick Sync Video)" };
+                return new string[] { "", "h264", "h264_nvenc (NVIDIA NVENC)", "h264_qsv (Intel Quick Sync Video)", "hevc", "hevc_nvenc (NVIDIA NVENC)", "hevc_qsv (Intel Quick Sync Video)", "vp9" };
             }
         }
 
@@ -249,7 +249,7 @@ namespace df
 
     }
 
-    
+
     public class ConvertAttribute : Attribute
     {
         public string name { get; set; } = "";
@@ -264,9 +264,9 @@ namespace df
     }
 
 
-   
 
 
-    
+
+
     ///////////////////
 }
