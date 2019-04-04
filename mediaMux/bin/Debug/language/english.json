@@ -269,6 +269,8 @@
   "shortest": "shortest",
   "shortest_descr": "Finish encoding when the shortest input stream ends. ",
   "concat_descr": "Concatenate audio and video streams, joining them together one after the other. ",
+  "two_pass": "two pass",
+  "two_pass_descr": "",
   "x26x_params": "x264/x265 params",
   "x26x_params_descr": "x264 and x265(hevc) common encoding parameters. When use GPU encoding(nvenc/qsv),it will be ignored.",
   "x265_params": "x265 params",

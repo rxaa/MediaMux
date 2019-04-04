@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -681,7 +682,7 @@ namespace df
 
                 var paras = getFieldAttr(f.parameters, 0);
 
-                inputCmd += " " + paras + " -i \"" + f.fileName + "\" \r\n";
+                inputCmd += " " + paras + " -i \"" + f.fileName + "\" \n";
 
             }
 
@@ -767,7 +768,7 @@ namespace df
 
                 if (st.isAttachmentFile)
                 {
-                    cmd += "\r\n -attach \"" + st.codec_long_name + "\" ";
+                    cmd += "\n -attach \"" + st.codec_long_name + "\" ";
 
                     cmd += getMetadata(st, streamI);
                 }
@@ -775,12 +776,12 @@ namespace df
                 {
                     if (filterMap != "")
                     {
-                        cmd += "\r\n -filter_complex \"" + filterMap + "\" ";
-                        cmd += "\r\n -map " + filterOut;
+                        cmd += "\n -filter_complex \"" + filterMap + "\" ";
+                        cmd += "\n -map " + filterOut;
                     }
                     else
                     {
-                        cmd += "\r\n -map " + st.fileIndex + ":" + st.index;
+                        cmd += "\n -map " + st.fileIndex + ":" + st.index;
                     }
 
 
@@ -795,9 +796,19 @@ namespace df
 
 
 
+
             if (convertAll != null && convertAll.command_line != "")
             {
-                cmd += "\r\n" + convertAll.command_line + " ";
+                cmd += "\n" + convertAll.command_line + " ";
+            }
+
+            cmd += "\n " + shortest;
+
+            if (convertAll != null && convertAll.video_2pass == "1")
+            {
+                var oldCmd = cmd;
+                var passFormat = convertAll.video_code.IndexOf("vp9") >= 0 ? "webm" : "mp4";
+                cmd += " -pass 1 -an  -f " + passFormat + " -y NUL \n\n&&\n\n" + inputCmd + oldCmd + " \n -pass 2";
             }
 
             //var pass1 = cmd + " -pass 1 -f " + ext + " -y NUL";
@@ -805,7 +816,9 @@ namespace df
             //await exec(inputCmd + pass1);
             //await exec(inputCmd + psss2);
 
-            cmd += "\r\n\r\n " + shortest + " -strict -2 -y \"" + toFile + "\" ";
+
+
+            cmd += "\n\n -strict -2 -y \"" + toFile + "\" ";
 
             return inputCmd + cmd;
         }
@@ -871,8 +884,11 @@ namespace df
                         cmd += " -qp:" + streamI + " " + crf + " ";
                     else if (convert.video_code.IndexOf("qsv") > 0)
                         cmd += "  -global_quality:" + streamI + " " + crf + " ";
+                    else if (convert.video_code.IndexOf("vp9") >= 0)
+                        cmd += "  -crf:" + streamI + " " + crf + " -b:v:" + streamI + " 0 ";
                     else
                         cmd += "  -crf:" + streamI + " " + crf + " ";
+
                 }
                 else if (convert.video_bit_rate != "")
                 {
@@ -973,7 +989,7 @@ namespace df
                 {
                     if (att.hasIndex)
                         cmd += " " + att.name + ":" + index + " " + val + " ";
-                    else
+                    else if (att.name != "")
                         cmd += " " + att.name + " " + val + " ";
                 }
             }
@@ -1026,7 +1042,7 @@ namespace df
         public volatile string processSpeed = "";
         public volatile string processFPS = "";
         public volatile string processTime = "";
-        private void onProcess(string dat)
+        private void onProcess(string dat, int nPass)
         {
             var duration = info.format.durationMilli;
             if (isProcessing(dat) && duration > 0)
@@ -1035,6 +1051,10 @@ namespace df
                 if (speedI >= 0)
                 {
                     processSpeed = dat.Substring(speedI + 6).Replace(" ", "");
+                    if (nPass > 0)
+                    {
+                        processSpeed += " " + (nPass + 1) + "-pass";
+                    }
                 }
 
                 var fpsI = dat.IndexOf("fps=");
@@ -1075,15 +1095,11 @@ namespace df
 
         public Action<string> onResLine = null;
 
-        public async Task exec(string cmd)
+        private async Task execOne(string cmd, int nPass)
         {
-            if (cmd == "")
-                throw new ExceptionFFmpeg(dfv.lang.dat.Command_cant_empty);
-
 #if DEBUG
             dfv.log(cmd);
 #endif
-
             cmd = cmd.Replace("\r", "").Replace("\n", " ");
 
             cmd += " -hide_banner";
@@ -1105,7 +1121,7 @@ namespace df
 
                 parseInfo(dat);
 
-                onProcess(dat);
+                onProcess(dat, nPass);
 
 
                 if (dat.StartsWith("[") ||
@@ -1139,6 +1155,19 @@ namespace df
 
 
             processPercent = 100;
+        }
+
+        public async Task exec(string cmd)
+        {
+            if (cmd == "")
+                throw new ExceptionFFmpeg(dfv.lang.dat.Command_cant_empty);
+
+
+            var ss = Regex.Split(cmd, "&&\n", RegexOptions.IgnoreCase);
+            for (int i = 0; i < ss.Length; i++)
+            {
+                await execOne(ss[i], i);
+            }
         }
 
         public static void kill()

@@ -161,6 +161,14 @@ namespace df
         [DescriptionDf("video_bit_rate_descr")]
         public string video_bit_rate { get; set; } = "";
 
+
+        [CategoryDf("video_")]
+        [TypeConverter(typeof(YesNoDefaultConverter))]
+        [DisplayNameDf("two_pass")]
+        [DescriptionDf("two_pass_descr")]
+        [ConvertAttribute(yesNoValue = true)]
+        public string video_2pass { get; set; } = "";
+
         [CategoryDf("video_")]
         [DisplayNameDf("video_max_bit_rate")]
         [DescriptionDf("video_max_bit_rate_descr")]

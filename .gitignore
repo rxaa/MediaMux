@@ -11,3 +11,5 @@
 /.vs
 /mediaMux/bin/Debug/concat.txt
 /mediaMux/bin/Debug/mediaMux.exe
+/mediaMux/bin/Debug/ffmpeg2pass-0.log
+/mediaMux/bin/Debug/ffmpeg2pass-0.log.mbtree

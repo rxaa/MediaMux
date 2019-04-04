@@ -222,6 +222,8 @@ QP curve compression. h264: 0.0 => CBR, 1.0 => CQP. h265: 0.5 - 1.0";
         public string shortest_descr = "Finish encoding when the shortest input stream ends. ";
         public string concat_descr = "Concatenate audio and video streams, joining them together one after the other. ";
 
+        public string two_pass = "two pass";
+        public string two_pass_descr = "";
 
         public string x26x_params = "x264/x265 params";
         public string x26x_params_descr = "x264 and x265(hevc) common encoding parameters. When use GPU encoding(nvenc/qsv),it will be ignored.";

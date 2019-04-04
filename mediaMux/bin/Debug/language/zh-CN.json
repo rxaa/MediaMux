@@ -269,6 +269,8 @@
   "shortest": "最短流(shortest)",
   "shortest_descr": "Finish encoding when the shortest input stream ends. ",
   "concat_descr": "Concatenate audio and video streams, joining them together one after the other. ",
+  "two_pass": "二次编码",
+  "two_pass_descr": "",
   "x26x_params": "x264/x265参数",
   "x26x_params_descr": "x264与x265共用编码参数. 当使用GPU编码时(nvenc/qsv), 将被忽略.",
   "x265_params": "x265参数",

@@ -316,8 +316,11 @@ namespace MediaMux
         void bindConvert(ConvertMedia ca)
         {
 
-            if (ca.ext != "")
-                comboBoxPack.Text = ca.ext;
+            if (checkBoxConvertAllAudio.Checked)
+            {
+                if (ca.ext != "")
+                    comboBoxPack.Text = ca.ext;
+            }
             comboBoxAudioCode.bindText(() => ca.audio_code);
             comboBoxAudioBitRate.bindText(() => ca.audio_bit_rate);
             comboBoxVideoCode.bindIndex(() => ca.video_codec);
@@ -828,26 +831,29 @@ namespace MediaMux
 
         private void buttonCfgList_Click(object sender, EventArgs e)
         {
-
-
             var codeList = new FormEditTitle();
-            codeList.setObj(convert, ffs);
-            if (!codeList.startSelect())
-                return;
 
 
             if (checkBoxConvertAllAudio.Checked)
             {
+                codeList.setObj(convert, ffs);
+                if (!codeList.startSelect())
+                    return;
                 this.convert = codeList.convert;
                 bindConvert(convert);
                 return;
             }
 
+            var stream = streamsCurrent[currentStreamIndex];
 
             if (currentStreamIndex >= streamsCurrent.Count)
                 return;
 
-            var stream = streamsCurrent[currentStreamIndex];
+            codeList.setObj(stream.convert, ffs);
+            if (!codeList.startSelect())
+                return;
+
+          
             stream.convert = codeList.convert;
             bindConvert(stream.convert);
         }
