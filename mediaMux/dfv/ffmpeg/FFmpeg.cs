@@ -899,7 +899,7 @@ namespace df
 
                 if (convert.video_max_bit_rate != "")
                 {
-                    cmd += " -maxrate " + convert.video_max_bit_rate + "k ";
+                    cmd += " -maxrate:v:" + streamI + " " + convert.video_max_bit_rate + "k ";
 
                     var buf_size = convert.video_buffer_size;
                     if (buf_size == "")
