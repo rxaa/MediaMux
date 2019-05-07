@@ -558,6 +558,19 @@ namespace df
             }
 
             filter = "";
+
+
+
+            var filterCfg = extFilters.getCMD();
+            if (filterCfg != "")
+            {
+                filterAll += checkFilter() + filterMain + filterCfg;
+                filterMain = mainStr;
+                //filterSub = subStr;
+                prevFilter = mainStr;
+            }
+
+
             ext.ForEach(str =>
             {
                 if (str != "")
@@ -568,15 +581,6 @@ namespace df
                     prevFilter = mainStr;
                 }
             });
-
-            var filterCfg = extFilters.getCMD();
-            if (filterCfg != "")
-            {
-                filterAll += checkFilter() + filterMain + filterCfg;
-                filterMain = mainStr;
-                //filterSub = subStr;
-                prevFilter = mainStr;
-            }
 
             return filterAll;
         }
