@@ -316,5 +316,13 @@ Alternatively, the options can be specified as a flat string: strength[:radius]"
         public string rd_descr = "Level of RDO in mode decision. The higher the value, the more exhaustive the analysis and the more rate distortion optimization is used. The lower the value the faster the encode, the higher the value the smaller the bitstream (in general). Default 3";
         public string ctu_descr = "Maximum CU size (width and height). The larger the maximum CU size, the more efficiently x265 can encode flat areas of the picture, giving large reductions in bitrate. However this comes at a loss of parallelism with fewer rows of CUs that can be encoded in parallel, and less frame parallelism as well. Because of this the faster presets use a CU size of 32. Default: 64";
         public string scenecut_descr = "How aggressively I-frames need to be inserted. The higher the threshold value, the more aggressive the I-frame placement. --scenecut 0 disables adaptive I frame placement. Default 40";
+
+
+        public string early_skip = "Measure 2Nx2N merge candidates first; if no residual is found, additional modes at that depth are not analysed. Default disabled";
+        public string fast_intra = "Perform an initial scan of every fifth intra angular mode, then check modes +/- 2 distance from the best mode, then +/- 1 distance from the best mode, effectively performing a gradient descent. When enabled 10 modes in total are checked. When disabled all 33 angular modes are checked. Only applicable for --rd levels 4 and below (medium preset and faster).";
+
+        public string rskip_descr = "This option determines early exit from CU depth recursion. When a skip CU is found, additional heuristics (depending on rd-level) are used to decide whether to terminate recursion. In rdlevels 5 and 6, comparison with inter2Nx2N is used, while at rdlevels 4 and neighbour costs are used to skip recursion. Provides minimal quality degradation at good performance gains when enabled.\r\nDefault: enabled, disabled for --tune grain";
+        public string splitrd_skip_descr = "Enable skipping split RD analysis when sum of split CU rdCost larger than one split CU rdCost for Intra CU. Default disabled.";
+        public string b_intra_descr = "Enables the evaluation of intra modes in B slices. Default disabled.";
     }
 }

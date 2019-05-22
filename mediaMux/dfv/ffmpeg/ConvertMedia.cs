@@ -64,6 +64,9 @@ namespace df
             else if (code.Contains("qsv"))
                 return new string[] { "", "veryfast", "faster", "fast", "medium",
         "slow","slower","veryslow" };
+            else if(code.Contains("vp9"))
+                return new string[] { "", "realtime", "good", "best" };
+
             return new string[] {  "","ultrafast", "superfast", "veryfast", "faster", "fast", "medium",
         "slow","slower","veryslow","placebo"};
         }
@@ -151,7 +154,7 @@ namespace df
         [CategoryDf("video_")]
         [DisplayNameDf("preset")]
         [DescriptionDf("preset_descr")]
-        [ConvertAttribute(name = "-preset", hasIndex = true)]
+        //[ConvertAttribute(name = "-preset", hasIndex = true)]
         [TypeConverterAttribute(typeof(CodeSpeedsConverter))]
         public string preset { get; set; } = "";
 

@@ -792,7 +792,14 @@ namespace df
 
                     metaData += getMetadata(st, streamI);
 
-                    cmd += getCodec(st, streamI, convertAll, ext) + " " + metaData;
+                    string extraParas = "";
+
+                    if (convertAll != null && convertAll.video_2pass == "1")
+                    {
+                        extraParas = "pass=1";
+                    }
+
+                    cmd += getCodec(st, streamI, convertAll, ext, extraParas) + " " + metaData;
 
                 }
                 streamI++;
@@ -812,6 +819,12 @@ namespace df
             {
                 var oldCmd = cmd;
                 var passFormat = convertAll.video_code.IndexOf("vp9") >= 0 ? "webm" : "mp4";
+
+                if (convertAll.video_code == "hevc")
+                {
+                    oldCmd = oldCmd.Replace("pass=1", "pass=2");
+                }
+
                 cmd += " -pass 1 -an  -f " + passFormat + " -y NUL \n\n&&\n\n" + inputCmd + oldCmd + " \n -pass 2";
             }
 
@@ -830,7 +843,7 @@ namespace df
 
 
 
-        string getCodec(MediaStream st, int streamI, ConvertMedia convertAll, string ext)
+        string getCodec(MediaStream st, int streamI, ConvertMedia convertAll, string ext, string extra265Paras = "")
         {
             var cmd = " -codec:" + streamI + " ";
 
@@ -914,6 +927,18 @@ namespace df
 
                 }
 
+                if (convert.preset != "")
+                {
+                    if(convert.video_code == "vp9")
+                    {
+                        cmd += "  -deadline:" + streamI + " " + convert.preset + " ";
+                    }
+                    else
+                    {
+                        cmd += "  -preset:" + streamI + " " + convert.preset + " ";
+                    }
+                }
+
 
                 if (convert.video_display_size != "")
                 {
@@ -955,9 +980,17 @@ namespace df
                     var vals = convert.x26x_params.GetType().GetProperties().Select(it => FileConvertParameter.getFieldStr(it, convert.x26x_params, true)).
                         Concat(convert.x265_params.GetType().GetProperties().Select(it => FileConvertParameter.getFieldStr(it, convert.x265_params, true)));
 
+                    if (extra265Paras != "")
+                    {
+                        vals = new string[] { extra265Paras }.Concat(vals);
+                    }
+
                     var paras = vals.JoinStr(":", it => it);
                     if (paras != "")
+                    {
                         cmd += " -x265-params:" + streamI + " \"" + paras + "\" ";
+
+                    }
                 }
 
             }

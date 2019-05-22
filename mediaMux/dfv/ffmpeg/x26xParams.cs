@@ -139,6 +139,35 @@ namespace df
         [ConvertAttribute(name = "amp", yesNoValue = true)]
         public string amp { get; set; } = "";
 
+
+        [TypeConverter(typeof(YesNoDefaultConverter))]
+        [DescriptionDf("early_skip")]
+        [ConvertAttribute(name = "early-skip", yesNoValue = true)]
+        public string early_skip { get; set; } = "";
+
+
+        [TypeConverter(typeof(YesNoDefaultConverter))]
+        [DescriptionDf("rskip_descr")]
+        [ConvertAttribute(name = "rskip", yesNoValue = true)]
+        public string rskip { get; set; } = "";
+
+
+        [TypeConverter(typeof(YesNoDefaultConverter))]
+        [DescriptionDf("splitrd_skip_descr")]
+        [ConvertAttribute(name = "splitrd-skip", yesNoValue = true)]
+        public string splitrd_skip { get; set; } = "";
+
+        [TypeConverter(typeof(YesNoDefaultConverter))]
+        [DescriptionDf("fast_intra")]
+        [ConvertAttribute(name = "fast-intra", yesNoValue = true)]
+        public string fast_intra { get; set; } = "";
+
+        [TypeConverter(typeof(YesNoDefaultConverter))]
+        [DescriptionDf("b_intra_descr")]
+        [ConvertAttribute(name = " b-intra", yesNoValue = true)]
+        public string b_intra { get; set; } = "";
+       
+
         [TypeConverter(typeof(YesNoDefaultConverter))]
         [DescriptionDf("ssim_rd_descr")]
         [ConvertAttribute(name = "ssim-rd", yesNoValue = true)]

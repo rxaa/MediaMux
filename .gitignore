@@ -13,3 +13,5 @@
 /mediaMux/bin/Debug/mediaMux.exe
 /mediaMux/bin/Debug/ffmpeg2pass-0.log
 /mediaMux/bin/Debug/ffmpeg2pass-0.log.mbtree
+/mediaMux/bin/Debug/x265_2pass.log
+/mediaMux/bin/Debug/x265_2pass.log.cutree
