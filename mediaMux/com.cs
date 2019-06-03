@@ -112,7 +112,7 @@ namespace MediaMux
             if (System.Threading.Thread.CurrentThread.CurrentCulture.Name == "zh-CN")
                return "https://www.mediamux.net/";
             else
-                return "https://mediamux.net//";
+                return "https://mediamux.net/";
         }
     }
 }

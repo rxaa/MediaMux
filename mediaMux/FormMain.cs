@@ -1279,7 +1279,7 @@ namespace MediaMux
             if (checkBoxConvertAllAudio.Checked)
             {
                 vf = dfv.joinStr(",", vf, convert.video_filters.getCMD());
-                af = dfv.joinStr(",", vf, convert.audio_filters.getCMD());
+                af = dfv.joinStr(",", af, convert.audio_filters.getCMD());
             }
             vf = dfv.joinStr(",", vf, FFmpeg.getFilesSubtitle(ffs));
             fp.setFilters(vf, af);
