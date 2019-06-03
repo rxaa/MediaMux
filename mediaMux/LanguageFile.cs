@@ -70,7 +70,11 @@ namespace MediaMux
 
         public string Convert_all_stream = "Convert all streams";
 
+        public string New_version = "New version";
 
+
+        public string check_update = "Check update";
+        public string check_update_descr = "Check new Release when startup.";
 
         public string Config = "Config";
         public string Stop = "Stop";

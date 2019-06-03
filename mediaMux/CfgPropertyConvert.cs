@@ -48,7 +48,7 @@ namespace MediaMux
         public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
         {
             var files = Directory.GetFiles(AppLanguage.LangMenu);
-            return new StandardValuesCollection(files.Select(it => Path.GetFileNameWithoutExtension(it)).ToList());
+            return new StandardValuesCollection(files.Select(it => Path.GetFileNameWithoutExtension(it).Split(',')[0]).ToList());
         }
         public override bool GetStandardValuesExclusive(ITypeDescriptorContext context)
         {

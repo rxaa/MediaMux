@@ -24,6 +24,11 @@ namespace MediaMux
         {
             richTextBox1.Text = str;
         }
+        public void addText(string str)
+        {
+
+            richTextBox1.AppendText(str);
+        }
 
         public void addText(string str, Color c, Font f = null)
         {
@@ -41,6 +46,12 @@ namespace MediaMux
         private void FormDetails_Load(object sender, EventArgs e)
         {
             richTextBox1.AutoWordSelection = false;
+        }
+
+        private void richTextBox1_LinkClicked(object sender, LinkClickedEventArgs e)
+        {
+            // Call Process.Start method to open a browser, with link text as URL
+            System.Diagnostics.Process.Start(e.LinkText); // call default browser
         }
     }
 }

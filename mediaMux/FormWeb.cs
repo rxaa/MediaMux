@@ -12,9 +12,14 @@ namespace MediaMux
 {
     public partial class FormWeb : Form
     {
-        public FormWeb()
+        public FormWeb(bool small = false)
         {
             InitializeComponent();
+            if (small)
+            {
+                Size = new Size(this.Size.Width / 2, (int)(Size.Height / 1.5));
+            }
+
             com.init(this);
         }
 
@@ -22,7 +27,17 @@ namespace MediaMux
         {
             this.webBrowser1.Navigate(str);
         }
+
+        public void setDocumentText(string str)
+        {
+            this.webBrowser1.DocumentText = str;
+        }
         private void FormWeb_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void webBrowser1_Navigating(object sender, WebBrowserNavigatingEventArgs e)
         {
 
         }

@@ -22,6 +22,13 @@ namespace MediaMux
         [DescriptionDf("font_descr")]
         public Font font_ui { get; set; } = null;
 
+
+        [CategoryDf("GUI")]
+        [DisplayNameDf("check_update")]
+        [DescriptionDf("check_update_descr")]
+        [TypeConverterAttribute(typeof(YesNoConverter))]
+        public string check_update { get; set; } = "1";
+
         [CategoryDf("Subtitle")]
         [DisplayNameDf("subtitle_font")]
         [DescriptionDf("subtitle_font_descr")]

@@ -31,11 +31,21 @@ namespace df
             {
                 language = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
             }
-
-            if (File.Exists(getLangFile(language)))
+            var fs = Directory.GetFiles(LangMenu);
+            foreach(var f in fs)
             {
-                return new ObjectFile<T>(getLangFile(language));
+                var name = Path.GetFileNameWithoutExtension(f);
+                var ns = name.Split(',');
+                foreach(var n in ns)
+                {
+                    if(n.ToLower() == language.ToLower())
+                    {
+                        return new ObjectFile<T>(f);
+                    }
+                }
             }
+
+
             return new ObjectFile<T>(getLangFile(engLang));
         }
 

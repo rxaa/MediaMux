@@ -21,6 +21,13 @@ namespace MediaMux
             return v.Major + "." + v.Minor + "." + v.Build;
         }
 
+        public static string getLangStr()
+        {
+            if (com.cfg.dat.languageFile != "")
+                return com.cfg.dat.languageFile;
+            return System.Threading.Thread.CurrentThread.CurrentCulture.Name;
+        }
+
         public static void updateLang()
         {
             com.lang = AppLanguage.select<LanguageFile>(com.cfg.dat.languageFile);
@@ -97,6 +104,15 @@ namespace MediaMux
             form.setIcon();
             AppLanguage.InitLanguage(form);
             initFont(form);
+        }
+
+
+        public static string homeUrl()
+        {
+            if (System.Threading.Thread.CurrentThread.CurrentCulture.Name == "zh-CN")
+               return "https://www.mediamux.net/";
+            else
+                return "https://mediamux.net//";
         }
     }
 }

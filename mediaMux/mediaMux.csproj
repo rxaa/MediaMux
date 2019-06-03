@@ -103,6 +103,7 @@
     <Compile Include="dfv\ffmpeg\VideoFilter.cs" />
     <Compile Include="dfv\ffmpeg\x26xParams.cs" />
     <Compile Include="dfv\FFplay.cs" />
+    <Compile Include="dfv\Http.cs" />
     <Compile Include="dfv\ImageCroppingBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -177,6 +178,7 @@
     <Compile Include="LanguageFile.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Version.cs" />
     <EmbeddedResource Include="dfv\SlideText.resx">
       <DependentUpon>SlideText.cs</DependentUpon>
     </EmbeddedResource>

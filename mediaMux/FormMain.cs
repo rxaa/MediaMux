@@ -332,11 +332,33 @@ namespace MediaMux
         }
 
 
+        async void checkUpdate()
+        {
+            try
+            {
+                var ver = await Http.HttpGetJson(com.homeUrl() + "media/version?lang=" + System.Threading.Thread.CurrentThread.CurrentCulture.Name, new Version());
+                if (ver.needUpdate())
+                {
+                    var fw = new FormWeb(true);
+                    fw.Text = com.lang.dat.New_version;
+                    fw.setDocumentText(ver.context);
+                    fw.Show();
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
 #if DEBUG
 
 #endif
+
+            if (com.cfg.dat.check_update != "")
+                this.checkUpdate();
 
             flowLayoutPanelProp.Enabled = false;
 
@@ -853,7 +875,7 @@ namespace MediaMux
             if (!codeList.startSelect())
                 return;
 
-          
+
             stream.convert = codeList.convert;
             bindConvert(stream.convert);
         }
@@ -1174,8 +1196,11 @@ namespace MediaMux
             var fd = new FormDetails();
             fd.Text = com.lang.dat.About;
             var f = new Font(this.Font.FontFamily, this.Font.Size + 1, FontStyle.Bold);
-            fd.addText("MediaMux " + com.lang.dat.version + " " + com.getVer() + "\r\n", Color.Black, f);
+            fd.addText("MediaMux " + com.lang.dat.version + " " + com.getVer() + "\r\n\r\n", Color.Black, f);
 
+
+            fd.addText("Web site:\r\n", Color.Black, f);
+            fd.addText(com.homeUrl() + "\r\n\r\n");
             fd.addText("Email:\r\n", Color.Black, f);
             fd.addText("zyxdde@gmail.com\r\n\r\n", Color.Blue);
 
@@ -1188,7 +1213,20 @@ namespace MediaMux
         {
             var fw = new FormWeb();
             fw.Text = com.lang.dat.Help;
-            fw.setUrl(Application.StartupPath + "\\help\\help_zh-CN.html");
+
+            var fs = Directory.GetFiles(Application.StartupPath + "\\help\\");
+            var langStr = com.getLangStr();
+            foreach (var f in fs)
+            {
+                if (f.ToLower().IndexOf(langStr.ToLower()) >= 0)
+                {
+                    fw.setUrl(f);
+                    fw.Show();
+                    return;
+                }
+            }
+
+            fw.setUrl(fs + "help_english.html");
             fw.Show();
         }
 

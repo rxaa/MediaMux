@@ -39,14 +39,15 @@
             this.webBrowser1.Location = new System.Drawing.Point(12, 12);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(941, 588);
+            this.webBrowser1.Size = new System.Drawing.Size(969, 610);
             this.webBrowser1.TabIndex = 0;
+            this.webBrowser1.Navigating += new System.Windows.Forms.WebBrowserNavigatingEventHandler(this.webBrowser1_Navigating);
             // 
             // FormWeb
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(965, 612);
+            this.ClientSize = new System.Drawing.Size(993, 634);
             this.Controls.Add(this.webBrowser1);
             this.Name = "FormWeb";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

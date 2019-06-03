@@ -67,6 +67,8 @@ namespace MediaMux
             if (this.textBoxTitle.Text == "")
             {
                 dfv.msgERR(com.lang.dat.Please_input_title);
+                textBoxTitle.Focus();
+                textBoxTitle.SelectAll();
                 return;
             }
 

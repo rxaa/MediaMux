@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script> -->
+</head>
+
+<body>
+    <a href="#burn_in_subtitle">
+        <h2>1.如何內封(burn in)字幕</h2>
+    </a>
+    <a href="#slide_show">
+        <h2>2.如何製作幻燈片視頻</h2>
+    </a>
+    <a href="#pip">
+        <h2>3.如何製作畫中畫</h2>
+    </a>
+
+    <p>
+        <h2 id="burn_in_subtitle">1.如何內封(burn in)字幕</h2>
+        如下圖所示, 添加待封裝的視頻與字幕檔. <br />
+        在左下角的檔流裏將不需要的字幕取消掉, 或者拖動字幕到最上方(默認只壓入第一個選中的文本或圖形字幕).<br />
+        設置容器為mp4.<br />
+        設置視頻編碼 (如果不設置編碼, 文本字幕將被軟壓入mp4, 由於mp4格式只支持內嵌純文本字幕, 所以圖形字幕將被忽略)<br />
+        開始封裝, OK.<br />
+        <img src="imgs/2352.png" width="100%" />
+    </p>
+
+    <p>
+        <h2 id="slide_show">2.如何製作幻燈片視頻</h2>
+
+        先將待製作的圖片全部修剪到同樣大小(當然也可以在MediaMux裏對圖片右鍵編輯參數調整縮放, 只是這樣需要一張張調整, 稍微麻煩一點).<br />
+        將所有圖片, 音頻檔與字幕拖入檔框, 選擇編碼參數, 注意一定要添加一個音頻檔, 否則編碼將無限迴圈(沒有音頻可以設置圖片檔的持續時長):<br />
+        <img src="imgs/3245.png" width="100%" /><br />
+        很多音樂檔裏都包含有專輯圖片cover.jpg, 像上面這種, 需要把它取消掉<br />
+        <p>從第二張圖片開始, 右鍵(或快捷鍵F2)編輯檔參數, 設置'覆蓋'屬性裏的開始時間: 30秒, 淡入時間: 0.5秒</p>
+        <img src="imgs/4566.png" width="100%" /><br />
+        <p>
+            設置第三張圖片, 開始時間: 1:0分鐘, 淡入時間:0.5秒<br />
+            依次類推......<br />
+            開始封裝, OK. 最終效果就是每隔30秒做淡入切換的幻燈片視頻.<br />
+        </p>
+    </p>
+
+    <p>
+        <h2 id="pip">3.如何製作畫中畫</h2>
+        將一個視頻(或圖片)嵌入另一個視頻. 和幻燈片一樣同樣是設置'覆蓋'屬性. <br />
+        右鍵編輯需要覆蓋的視頻, 設置覆蓋位置, x,y座標(可以為負值表示相反方向移動), 縮放大小等等. <br />
+        如果同時需要畫中畫的音頻的話, 也可以將'混音'屬性選上.(同時需要設置音頻編碼參數) <br />
+        <img src="imgs/5354.png" width="100%" /><br />
+        以上表示將Upgrade.mkv縮放覆蓋到venom.mkv的右下角, 邊距10像素, 縮放300:-1 , 表示寬度300像素, 高度自適應.(當視頻或音頻設置'覆蓋'或'混音'屬性時,
+        左下角的檔流會被自動取消選擇,
+        否則的話這個視頻或音頻將被做為第二軌道封裝.)
+
+    </p>
+</body>
+
+</html>
