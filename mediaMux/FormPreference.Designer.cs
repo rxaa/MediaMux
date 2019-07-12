@@ -35,6 +35,8 @@
             // buttonOk
             // 
             this.buttonOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonOk.Image = global::MediaMux.Properties.Resources.icon_ok;
+            this.buttonOk.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonOk.Location = new System.Drawing.Point(449, 581);
             this.buttonOk.Name = "buttonOk";
             this.buttonOk.Size = new System.Drawing.Size(122, 47);

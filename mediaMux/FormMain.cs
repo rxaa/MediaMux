@@ -56,6 +56,14 @@ namespace MediaMux
             init();
 
             this.Text += " " + com.lang.dat.version + " " + com.getVer();
+
+            com.resizeButtonImg(buttonClear);
+            com.resizeButtonImg(buttonAdd);
+            com.resizeButtonImg(buttonStartPack);
+            com.resizeButtonImg(buttonCfgList);
+            com.resizeButtonImg(buttonBatchEncode);
+            com.resizeButtonImg(buttonStart);
+            com.resizeButtonImg(buttonMerge);
         }
 
 
@@ -993,7 +1001,7 @@ namespace MediaMux
             //}
 
             var edit = new FormEditProperty();
-            edit.setObj(ff.parameters, ff);
+            edit.setObj(ff.parameters, ff,ffs);
             edit.StartEdit(() =>
             {
                 //ff.parameters = JsonConvert.DeserializeAnonymousType(edit.EditText, ff.parameters);
@@ -1119,7 +1127,7 @@ namespace MediaMux
         }
 
         List<string> convertEachRes = new List<string>();
-        async private void converteachfileToolStripMenuItem_Click(object sender, EventArgs e)
+        async void batchEncode()
         {
             if (files.Count < 1)
             {
@@ -1174,7 +1182,12 @@ namespace MediaMux
             labelProc.Text = successCount + " " + com.lang.dat.Complete + " "
                 + (ffs.Count - successCount) + " " + com.lang.dat.Failed + "!";
             FFmpeg.getAllStreams(ffs);
+        }
 
+        async private void converteachfileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            batchEncode();
         }
 
 
@@ -1286,6 +1299,11 @@ namespace MediaMux
             fp.play(ff.fileName);
 
             fp.Show();
+        }
+
+        private void buttonBatchEncode_Click(object sender, EventArgs e)
+        {
+            batchEncode();
         }
     }
 }

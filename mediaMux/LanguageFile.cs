@@ -29,6 +29,9 @@ namespace MediaMux
         public string Muxer = "Multiplexer";
         public string Number_of_files = "Number of files:";
         public string Stopped = "Stopped";
+        public string Start_mux = "Start mux";
+        public string Batch_encode = "Batch encode";
+        public string copy_to_all = "Apply to all files";
 
         public string Split_mode = "Split mode:";
         public string Specific_time = "Specific time range(one time point each line)";

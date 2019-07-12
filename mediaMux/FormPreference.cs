@@ -18,6 +18,8 @@ namespace MediaMux
         {
             InitializeComponent();
             com.init(this);
+
+            com.resizeButtonImg(buttonOk);
         }
 
         private void FormPreference_Load(object sender, EventArgs e)

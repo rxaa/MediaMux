@@ -30,6 +30,7 @@
         {
             this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
             this.button1 = new System.Windows.Forms.Button();
+            this.buttonCopy = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // propertyGrid1
@@ -46,19 +47,31 @@
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(557, 3);
+            this.button1.Image = global::MediaMux.Properties.Resources.video_player;
+            this.button1.Location = new System.Drawing.Point(548, 3);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(92, 30);
+            this.button1.Size = new System.Drawing.Size(101, 30);
             this.button1.TabIndex = 1;
             this.button1.Text = "Preview";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // buttonCopy
+            // 
+            this.buttonCopy.Location = new System.Drawing.Point(361, 3);
+            this.buttonCopy.Name = "buttonCopy";
+            this.buttonCopy.Size = new System.Drawing.Size(169, 30);
+            this.buttonCopy.TabIndex = 2;
+            this.buttonCopy.Text = "copy_to_all";
+            this.buttonCopy.UseVisualStyleBackColor = true;
+            this.buttonCopy.Click += new System.EventHandler(this.buttonCopy_Click);
             // 
             // FormEditProperty
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(661, 683);
+            this.Controls.Add(this.buttonCopy);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.propertyGrid1);
             this.Name = "FormEditProperty";
@@ -74,5 +87,6 @@
         #endregion
         private System.Windows.Forms.PropertyGrid propertyGrid1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonCopy;
     }
 }

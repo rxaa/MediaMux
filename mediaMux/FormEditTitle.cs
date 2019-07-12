@@ -28,6 +28,11 @@ namespace MediaMux
         {
             InitializeComponent();
             com.init(this);
+
+            com.resizeButtonImg(button1);
+            com.resizeButtonImg(buttonAdd);
+            com.resizeButtonImg(buttonRemove);
+            com.resizeButtonImg(buttonPreview);
         }
 
 

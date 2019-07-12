@@ -1,4 +1,5 @@
 ﻿using df;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,7 +18,7 @@ namespace MediaMux
         {
             InitializeComponent();
             com.init(this);
-
+            com.resizeButtonImg(button1);
         }
         Action onSaveAct = null;
         public void StartEdit(Action onSave)
@@ -27,12 +28,14 @@ namespace MediaMux
         }
 
         FFmpeg ffm;
+        List<FFmpeg> ffList;
         object parasObj;
-        public void setObj<T>(T obj, FFmpeg ff)
+        public void setObj<T>(T obj, FFmpeg ff, List<FFmpeg> ffs)
         {
             ffm = ff;
             parasObj = obj;
             propertyGrid1.SelectedObject = parasObj;
+            ffList = ffs;
             ExpandOne(propertyGrid1);
         }
 
@@ -66,7 +69,7 @@ namespace MediaMux
             if (e.KeyChar == (char)Keys.Escape)
             {
                 e.Handled = false;
-                this.Close();   
+                this.Close();
             }
         }
 
@@ -84,6 +87,25 @@ namespace MediaMux
         private void FormEditProperty_FormClosing(object sender, FormClosingEventArgs e)
         {
             onSaveAct?.Invoke();
+        }
+
+        private void buttonCopy_Click(object sender, EventArgs e)
+        {
+            if (ffList != null)
+            {
+
+                var str = JsonConvert.SerializeObject(ffm.parameters);
+                foreach (var ff in ffList)
+                {
+                    var prev = ff.parameters;
+                    ff.parameters = JsonConvert.DeserializeObject<FileConvertParameter>(str);
+                    ff.parameters.fileName = prev.fileName;
+                    ff.parameters.loop = prev.loop;
+                    ff.parameters.overlay.position = prev.overlay.position;
+                    ff.parameters.overlay.shortest = prev.overlay.shortest;
+                }
+                dfv.msg("ok");
+            }
         }
     }
 }

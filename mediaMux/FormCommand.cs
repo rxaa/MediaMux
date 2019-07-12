@@ -18,6 +18,7 @@ namespace MediaMux
             InitializeComponent();
             com.init(this);
             com.initFont(richTextBox1);
+            com.resizeButtonImg(buttonStart);
         }
 
         public string EditText

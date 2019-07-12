@@ -856,15 +856,12 @@ namespace df
                 cmd += convert.audio_code;
 
 
-
                 if (convert.audio_bit_rate != "")
                     cmd += " -ab:" + streamI + " " + convert.audio_bit_rate + "k ";
                 else if (convert.audio_quality != "")
                     cmd += " -aq:" + streamI + " " + convert.audio_quality + " ";
                 else
                     cmd += " -aq:" + streamI + " 2 ";
-
-
 
 
                 if (convert.audio_channels != "")

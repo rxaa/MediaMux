@@ -47,9 +47,10 @@
             // buttonStart
             // 
             this.buttonStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonStart.Location = new System.Drawing.Point(718, 639);
+            this.buttonStart.Image = global::MediaMux.Properties.Resources.play_button;
+            this.buttonStart.Location = new System.Drawing.Point(714, 639);
             this.buttonStart.Name = "buttonStart";
-            this.buttonStart.Size = new System.Drawing.Size(118, 44);
+            this.buttonStart.Size = new System.Drawing.Size(122, 44);
             this.buttonStart.TabIndex = 4;
             this.buttonStart.Text = "Start";
             this.buttonStart.UseVisualStyleBackColor = true;

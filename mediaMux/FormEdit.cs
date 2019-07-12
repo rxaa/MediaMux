@@ -20,7 +20,7 @@ namespace MediaMux
             com.init(this);
             com.initFont(richTextBox1);
 
-           
+            com.resizeButtonImg(button1);
         }
 
         public bool verifyJson = false;

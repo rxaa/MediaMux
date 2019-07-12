@@ -90,6 +90,15 @@ namespace MediaMux
             };
         }
 
+        public static void resizeButtonImg(Button buttonAdd)
+        {
+            if (buttonAdd.Image == null)
+                return;
+            buttonAdd.Image = new Bitmap(buttonAdd.Image, buttonAdd.Height - 9, buttonAdd.Height - 9);
+            buttonAdd.ImageAlign = ContentAlignment.MiddleRight;
+            buttonAdd.TextImageRelation = TextImageRelation.ImageBeforeText;
+        }
+
         public static void initFont(Control form)
         {
             if (com.cfg.dat.font_ui != null)

@@ -239,6 +239,21 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\icon_merge.png" />
+    <None Include="Resources\icon_split.png" />
+    <None Include="Resources\icon_ok.png" />
+    <None Include="Resources\video_player.png" />
+    <None Include="Resources\save_floppy.png" />
+    <None Include="Resources\fast_forward.png" />
+    <None Include="Resources\adjustment.png" />
+    <None Include="Resources\question.png" />
+    <None Include="Resources\icon_terminal.png" />
+    <None Include="Resources\icon_stop.png" />
+    <None Include="Resources\remove.png" />
+    <None Include="Resources\icon_close.png" />
+    <None Include="Resources\add_button.png" />
+    <None Include="Resources\settings.png" />
+    <None Include="Resources\play_button.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

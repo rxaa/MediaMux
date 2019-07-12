@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.buttonBatchEncode = new System.Windows.Forms.Button();
             this.buttonCfgList = new System.Windows.Forms.Button();
             this.comboBoxPack = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -85,8 +86,6 @@
             this.viewdetailsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.editparamsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.previewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.buttonAdd = new System.Windows.Forms.Button();
-            this.buttonClear = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.FileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.preferencesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -120,6 +119,8 @@
             this.label15 = new System.Windows.Forms.Label();
             this.flowLayoutPanelProp = new System.Windows.Forms.FlowLayoutPanel();
             this.button2 = new System.Windows.Forms.Button();
+            this.buttonClear = new System.Windows.Forms.Button();
+            this.buttonAdd = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -149,6 +150,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.buttonBatchEncode);
             this.tabPage3.Controls.Add(this.buttonCfgList);
             this.tabPage3.Controls.Add(this.comboBoxPack);
             this.tabPage3.Controls.Add(this.label5);
@@ -162,11 +164,24 @@
             this.tabPage3.Text = "Muxer";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // buttonBatchEncode
+            // 
+            this.buttonBatchEncode.Image = global::MediaMux.Properties.Resources.fast_forward;
+            this.buttonBatchEncode.Location = new System.Drawing.Point(225, 13);
+            this.buttonBatchEncode.Name = "buttonBatchEncode";
+            this.buttonBatchEncode.Size = new System.Drawing.Size(142, 45);
+            this.buttonBatchEncode.TabIndex = 11;
+            this.buttonBatchEncode.Text = "Batch_encode";
+            this.buttonBatchEncode.UseVisualStyleBackColor = true;
+            this.buttonBatchEncode.Click += new System.EventHandler(this.buttonBatchEncode_Click);
+            // 
             // buttonCfgList
             // 
-            this.buttonCfgList.Location = new System.Drawing.Point(310, 82);
+            this.buttonCfgList.Image = global::MediaMux.Properties.Resources.settings;
+            this.buttonCfgList.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonCfgList.Location = new System.Drawing.Point(300, 82);
             this.buttonCfgList.Name = "buttonCfgList";
-            this.buttonCfgList.Size = new System.Drawing.Size(75, 40);
+            this.buttonCfgList.Size = new System.Drawing.Size(104, 40);
             this.buttonCfgList.TabIndex = 10;
             this.buttonCfgList.Text = "Config";
             this.buttonCfgList.UseVisualStyleBackColor = true;
@@ -397,12 +412,14 @@
             // 
             // buttonStartPack
             // 
-            this.buttonStartPack.Location = new System.Drawing.Point(124, 13);
+            this.buttonStartPack.Image = global::MediaMux.Properties.Resources.play_button;
+            this.buttonStartPack.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonStartPack.Location = new System.Drawing.Point(49, 13);
             this.buttonStartPack.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.buttonStartPack.Name = "buttonStartPack";
-            this.buttonStartPack.Size = new System.Drawing.Size(127, 45);
+            this.buttonStartPack.Size = new System.Drawing.Size(142, 45);
             this.buttonStartPack.TabIndex = 4;
-            this.buttonStartPack.Text = "Start";
+            this.buttonStartPack.Text = "Start_mux";
             this.buttonStartPack.UseVisualStyleBackColor = true;
             this.buttonStartPack.Click += new System.EventHandler(this.buttonStartPack_Click);
             // 
@@ -466,9 +483,10 @@
             // 
             // buttonStart
             // 
+            this.buttonStart.Image = global::MediaMux.Properties.Resources.icon_split;
             this.buttonStart.Location = new System.Drawing.Point(105, 190);
             this.buttonStart.Name = "buttonStart";
-            this.buttonStart.Size = new System.Drawing.Size(138, 46);
+            this.buttonStart.Size = new System.Drawing.Size(150, 59);
             this.buttonStart.TabIndex = 2;
             this.buttonStart.Text = "Start_split";
             this.buttonStart.UseVisualStyleBackColor = true;
@@ -495,9 +513,10 @@
             // 
             // buttonMerge
             // 
+            this.buttonMerge.Image = global::MediaMux.Properties.Resources.icon_merge;
             this.buttonMerge.Location = new System.Drawing.Point(105, 55);
             this.buttonMerge.Name = "buttonMerge";
-            this.buttonMerge.Size = new System.Drawing.Size(138, 46);
+            this.buttonMerge.Size = new System.Drawing.Size(150, 59);
             this.buttonMerge.TabIndex = 2;
             this.buttonMerge.Text = "Start_concat";
             this.buttonMerge.UseVisualStyleBackColor = true;
@@ -704,26 +723,6 @@
             this.previewToolStripMenuItem.Text = "Preview";
             this.previewToolStripMenuItem.Click += new System.EventHandler(this.previewToolStripMenuItem_Click);
             // 
-            // buttonAdd
-            // 
-            this.buttonAdd.Location = new System.Drawing.Point(91, 37);
-            this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(105, 34);
-            this.buttonAdd.TabIndex = 1;
-            this.buttonAdd.Text = "AddFiles";
-            this.buttonAdd.UseVisualStyleBackColor = true;
-            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
-            // 
-            // buttonClear
-            // 
-            this.buttonClear.Location = new System.Drawing.Point(8, 37);
-            this.buttonClear.Name = "buttonClear";
-            this.buttonClear.Size = new System.Drawing.Size(65, 34);
-            this.buttonClear.TabIndex = 1;
-            this.buttonClear.Text = "Clear";
-            this.buttonClear.UseVisualStyleBackColor = true;
-            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
-            // 
             // menuStrip1
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -791,11 +790,12 @@
             // 
             this.converteachfileToolStripMenuItem.Name = "converteachfileToolStripMenuItem";
             this.converteachfileToolStripMenuItem.Size = new System.Drawing.Size(218, 26);
-            this.converteachfileToolStripMenuItem.Text = "Convert_each_file";
+            this.converteachfileToolStripMenuItem.Text = "Batch_encode";
             this.converteachfileToolStripMenuItem.Click += new System.EventHandler(this.converteachfileToolStripMenuItem_Click);
             // 
             // commandlineToolStripMenuItem1
             // 
+            this.commandlineToolStripMenuItem1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.commandlineToolStripMenuItem1.Name = "commandlineToolStripMenuItem1";
             this.commandlineToolStripMenuItem1.ShortcutKeys = System.Windows.Forms.Keys.F3;
             this.commandlineToolStripMenuItem1.Size = new System.Drawing.Size(218, 26);
@@ -814,14 +814,14 @@
             // aboutToolStripMenuItem1
             // 
             this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
-            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(181, 26);
+            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(130, 26);
             this.aboutToolStripMenuItem1.Text = "About";
             this.aboutToolStripMenuItem1.Click += new System.EventHandler(this.aboutToolStripMenuItem1_Click);
             // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(130, 26);
             this.helpToolStripMenuItem.Text = "Help";
             this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
             // 
@@ -977,9 +977,9 @@
             // 
             // label15
             // 
-            this.label15.Location = new System.Drawing.Point(203, 47);
+            this.label15.Location = new System.Drawing.Point(212, 47);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(112, 15);
+            this.label15.Size = new System.Drawing.Size(103, 15);
             this.label15.TabIndex = 8;
             this.label15.Text = "Destination";
             this.label15.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -1013,6 +1013,32 @@
             this.button2.Text = "...";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // buttonClear
+            // 
+            this.buttonClear.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonClear.Image = global::MediaMux.Properties.Resources.remove;
+            this.buttonClear.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonClear.Location = new System.Drawing.Point(8, 37);
+            this.buttonClear.Name = "buttonClear";
+            this.buttonClear.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.buttonClear.Size = new System.Drawing.Size(80, 34);
+            this.buttonClear.TabIndex = 1;
+            this.buttonClear.Text = "Clear";
+            this.buttonClear.UseVisualStyleBackColor = true;
+            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
+            // 
+            // buttonAdd
+            // 
+            this.buttonAdd.Image = global::MediaMux.Properties.Resources.add_button;
+            this.buttonAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonAdd.Location = new System.Drawing.Point(94, 37);
+            this.buttonAdd.Name = "buttonAdd";
+            this.buttonAdd.Size = new System.Drawing.Size(112, 34);
+            this.buttonAdd.TabIndex = 1;
+            this.buttonAdd.Text = "AddFiles";
+            this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
             // FormMain
             // 
@@ -1155,6 +1181,7 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem previewToolStripMenuItem;
+        private System.Windows.Forms.Button buttonBatchEncode;
     }
 }
 

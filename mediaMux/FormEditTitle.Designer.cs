@@ -69,9 +69,10 @@
             // buttonRemove
             // 
             this.buttonRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonRemove.Image = global::MediaMux.Properties.Resources.remove;
             this.buttonRemove.Location = new System.Drawing.Point(12, 643);
             this.buttonRemove.Name = "buttonRemove";
-            this.buttonRemove.Size = new System.Drawing.Size(85, 40);
+            this.buttonRemove.Size = new System.Drawing.Size(95, 40);
             this.buttonRemove.TabIndex = 8;
             this.buttonRemove.Text = "Remove";
             this.buttonRemove.UseVisualStyleBackColor = true;
@@ -80,9 +81,10 @@
             // buttonAdd
             // 
             this.buttonAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonAdd.Location = new System.Drawing.Point(134, 643);
+            this.buttonAdd.Image = global::MediaMux.Properties.Resources.save_floppy;
+            this.buttonAdd.Location = new System.Drawing.Point(124, 643);
             this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(91, 40);
+            this.buttonAdd.Size = new System.Drawing.Size(101, 40);
             this.buttonAdd.TabIndex = 7;
             this.buttonAdd.Text = "Save";
             this.buttonAdd.UseVisualStyleBackColor = true;
@@ -115,6 +117,7 @@
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Image = global::MediaMux.Properties.Resources.icon_ok;
             this.button1.Location = new System.Drawing.Point(647, 644);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(103, 39);
@@ -126,6 +129,7 @@
             // buttonPreview
             // 
             this.buttonPreview.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonPreview.Image = global::MediaMux.Properties.Resources.video_player;
             this.buttonPreview.Location = new System.Drawing.Point(521, 644);
             this.buttonPreview.Name = "buttonPreview";
             this.buttonPreview.Size = new System.Drawing.Size(100, 39);
