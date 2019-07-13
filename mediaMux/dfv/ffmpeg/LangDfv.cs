@@ -324,5 +324,9 @@ Alternatively, the options can be specified as a flat string: strength[:radius]"
         public string rskip_descr = "This option determines early exit from CU depth recursion. When a skip CU is found, additional heuristics (depending on rd-level) are used to decide whether to terminate recursion. In rdlevels 5 and 6, comparison with inter2Nx2N is used, while at rdlevels 4 and neighbour costs are used to skip recursion. Provides minimal quality degradation at good performance gains when enabled.\r\nDefault: enabled, disabled for --tune grain";
         public string splitrd_skip_descr = "Enable skipping split RD analysis when sum of split CU rdCost larger than one split CU rdCost for Intra CU. Default disabled.";
         public string b_intra_descr = "Enables the evaluation of intra modes in B slices. Default disabled.";
+
+        public string open_gop_descr = "Enable open GOP, allow I-slices to be non-IDR.";
+
+        public string mbtree_descr = "mb-tree ratecontrol.x264 only.";
     }
 }

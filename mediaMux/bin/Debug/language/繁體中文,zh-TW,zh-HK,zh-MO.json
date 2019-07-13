@@ -337,5 +337,7 @@
   "fast_intra": "Perform an initial scan of every fifth intra angular mode, then check modes +/- 2 distance from the best mode, then +/- 1 distance from the best mode, effectively performing a gradient descent. When enabled 10 modes in total are checked. When disabled all 33 angular modes are checked. Only applicable for --rd levels 4 and below (medium preset and faster).",
   "rskip_descr": "This option determines early exit from CU depth recursion. When a skip CU is found, additional heuristics (depending on rd-level) are used to decide whether to terminate recursion. In rdlevels 5 and 6, comparison with inter2Nx2N is used, while at rdlevels 4 and neighbour costs are used to skip recursion. Provides minimal quality degradation at good performance gains when enabled.\r\nDefault: enabled, disabled for --tune grain",
   "splitrd_skip_descr": "Enable skipping split RD analysis when sum of split CU rdCost larger than one split CU rdCost for Intra CU. Default disabled.",
-  "b_intra_descr": "Enables the evaluation of intra modes in B slices. Default disabled."
+  "b_intra_descr": "Enables the evaluation of intra modes in B slices. Default disabled.",
+  "open_gop_descr": "Enable open GOP, allow I-slices to be non-IDR.",
+  "mbtree_descr": "mb-tree ratecontrol.x264 only."
 }

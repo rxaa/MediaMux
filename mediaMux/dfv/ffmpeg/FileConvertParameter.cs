@@ -149,8 +149,12 @@ namespace df
                     {
                         if (val.Equals("1"))
                             return name + "=1";
-                        else if (val.Equals("0"))
-                            return "no-" + name + "=1";
+                        else if (val.Equals("0")) { 
+                            if(name2)
+                                return "no-" + name + "=1";
+                            else
+                                return name + "=0";
+                        }
                         else
                             return null;
                     }

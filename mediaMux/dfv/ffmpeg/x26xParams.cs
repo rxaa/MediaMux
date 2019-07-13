@@ -22,6 +22,11 @@ namespace df
         [EditorAttribute(typeof(PropertyGridSlide), typeof(System.Drawing.Design.UITypeEditor))]
         public string keyint_min { get; set; } = "";
 
+        [TypeConverter(typeof(YesNoDefaultConverter))]
+        [DescriptionDf("open_gop_descr")]
+        [ConvertAttribute(name = "open_gop", x265name = "open-gop", yesNoValue = true)]
+        public string open_gop { get; set; } = "";
+
         [DescriptionDf("scenecut_descr")]
         [ConvertAttribute(name = "scenecut")]
         [PropertySlide(defaul = 40, max = 100, min = 0, step = 1, toFloat = 1)]
@@ -32,6 +37,12 @@ namespace df
         [PropertySlide(defaul = 4, max = 16, min = 0, step = 1, toFloat = 1)]
         [EditorAttribute(typeof(PropertyGridSlide), typeof(System.Drawing.Design.UITypeEditor))]
         public string bframes { get; set; } = "";
+
+        [TypeConverter(typeof(YesNoDefaultConverter))]
+        [DescriptionDf("mbtree_descr")]
+        [ConvertAttribute(name = "mbtree", yesNoValue = true)]
+        public string mbtree { get; set; } = "";
+
 
         [DescriptionDf("qpmax_descr")]
         public string qpmax { get; set; } = "";
@@ -166,7 +177,7 @@ namespace df
         [DescriptionDf("b_intra_descr")]
         [ConvertAttribute(name = " b-intra", yesNoValue = true)]
         public string b_intra { get; set; } = "";
-       
+
 
         [TypeConverter(typeof(YesNoDefaultConverter))]
         [DescriptionDf("ssim_rd_descr")]

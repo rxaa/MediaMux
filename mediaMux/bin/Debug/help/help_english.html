@@ -11,12 +11,23 @@
 </head>
 
 <body>
-    <a href="#burn_in_subtitle">
-        <h2>1.How to burn in subtitle</h2>
+    <a href="#mux_batch_encode">
+        <h2>What's the difference between ‘Start mux’ and ‘Batch encode’?</h2>
     </a>
+    <a href="#burn_in_subtitle">
+        <h2>How to burn in subtitle</h2>
+    </a>
+    <hr>
+    <p>
+        <h2 id="mux_batch_encode">What's the difference between ‘Start mux’ and ‘Batch encode’?</h2>
+        'Start mux' : All videos, audio or subtitles will be embedded into a single file(containing multiple
+        tracks).<br />
+        'Batch encode' : Each file will be encoded and output separately.
+    </p>
+    <hr>
 
     <p>
-        <h2 id="burn_in_subtitle">1.How to burn in subtitle</h2>
+        <h2 id="burn_in_subtitle">How to burn in subtitle</h2>
         First, Add video and subtitle files, as shown below.<br />
 
         Disable unnecessary subtitles in the lower left file stream.(By default, only the first selected text or graphic
@@ -27,7 +38,7 @@
         Set video code (If not select code, text subtitles will be embedded into mp4, and MP4 format only supports text
         subtitles, so graphic subtitles will be ignored.)<br />
 
-        Start, OK. <br />
+        Start mux, OK. <br />
         <img src="imgs/4356.png" width="100%" />
     </p>
 
