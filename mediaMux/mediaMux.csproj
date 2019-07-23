@@ -121,6 +121,7 @@
     </Compile>
     <Compile Include="dfv\sys.cs" />
     <Compile Include="dfv\TaskBar.cs" />
+    <Compile Include="dfv\UTF8Marshaler .cs" />
     <Compile Include="FormCommand.cs">
       <SubType>Form</SubType>
     </Compile>

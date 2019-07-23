@@ -8,6 +8,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -1001,7 +1002,7 @@ namespace MediaMux
             //}
 
             var edit = new FormEditProperty();
-            edit.setObj(ff.parameters, ff,ffs);
+            edit.setObj(ff.parameters, ff, ffs);
             edit.StartEdit(() =>
             {
                 //ff.parameters = JsonConvert.DeserializeAnonymousType(edit.EditText, ff.parameters);

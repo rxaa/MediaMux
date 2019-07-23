@@ -47,13 +47,20 @@ namespace df
 
 
         [DllImport(FFdll)]
-        public static extern int ffplay_set_vf(string name);
+        public static extern int ffplay_set_vf(
+               [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8Marshaler))]
+            string name);
 
         [DllImport(FFdll)]
-        public static extern int ffplay_set_af(string name);
+        public static extern int ffplay_set_af(
+               [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8Marshaler))]
+            string name);
 
         [DllImport(FFdll)]
-        static extern int ffplay_start(string name, IntPtr hwndParent);
+        static extern int ffplay_start(
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8Marshaler))]
+            string name,
+            IntPtr hwndParent);
 
 
         [DllImport(FFdll)]
@@ -106,5 +113,17 @@ namespace df
         public static extern int ffplay_get_left();
         [DllImport(FFdll)]
         public static extern float ffplay_get_aspect_ratio();
+
+        [DllImport(FFdll)]
+        public static extern IntPtr ffprobe_file_info(
+               [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8Marshaler))]
+            string file);
+
+
+
+        public static string probeFileInfo(string file)
+        {
+            return UTF8Marshaler.PtrToStr(ffprobe_file_info(file));
+        }
     }
 }
