@@ -141,36 +141,30 @@ namespace df
         }
 
 
-        public async Task getInfo(string file)
+        public Task getInfo(string file)
         {
             if (file == "")
                 throw new ExceptionFFmpeg(dfv.lang.dat.Please_add_file_name);
-
             fileName = file;
-            var ext = dfv.getFileExt(file);
-            if (ext == "avs")
+            return Task.Run(() =>
             {
-                info.format.format_name = "avs";
-                info.streams.Add(getAvs(file));
-                return;
-            }
+                var ext = dfv.getFileExt(file);
+                if (ext == "avs")
+                {
+                    info.format.format_name = "avs";
+                    infoObj.format.Add("format_name", "avs");
+                    info.streams.Add(getAvs(file));
+                    return;
+                }
 
-            CommandTask command = new CommandTask();
-            var json = "";
+                var json = FFplay.probeFileInfo(file);
 
-            command.onRes = (dat) =>
-            {
-                json += dat;
-            };
-            await command.exec(ffprobe, " -print_format json -v quiet -show_error -show_format -show_streams -show_chapters  \"" + file + "\" ");
+                infoObj = JsonConvert.DeserializeObject<MediaFileObj>(json);
+                info = infoObj.toMediaFile();
 
-            infoObj = JsonConvert.DeserializeObject<MediaFileObj>(json);
-            info = infoObj.toMediaFile();
-
-            if (infoObj.error.message != "")
-                throw new ExceptionFFmpeg(infoObj.error.message);
-
-            info.format.durationMilli = dfv.timeStrToLong(info.format.duration);
+                if (infoObj.error != "")
+                    throw new ExceptionFFmpeg(infoObj.error);
+            });
         }
 
 
@@ -926,7 +920,7 @@ namespace df
 
                 if (convert.preset != "")
                 {
-                    if(convert.video_code == "vp9")
+                    if (convert.video_code == "vp9")
                     {
                         cmd += "  -deadline:" + streamI + " " + convert.preset + " ";
                     }
@@ -1056,10 +1050,9 @@ namespace df
                     if (du != "N/A")
                     {
                         var dl = dfv.timeStrToLong(du);
-                        if (dl > info.format.durationMilli)
+                        if (dl > info.format.duration)
                         {
-                            info.format.durationMilli = dl;
-                            info.format.duration = du;
+                            info.format.duration = dl;
                         }
 
                     }
@@ -1078,7 +1071,7 @@ namespace df
         public volatile string processTime = "";
         private void onProcess(string dat, int nPass)
         {
-            var duration = info.format.durationMilli;
+            var duration = info.format.duration;
             if (isProcessing(dat) && duration > 0)
             {
                 var speedI = dat.IndexOf("speed=");

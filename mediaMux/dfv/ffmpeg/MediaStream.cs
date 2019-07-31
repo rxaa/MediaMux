@@ -13,16 +13,14 @@ namespace df
     {
         public List<MediaStream> streams { get; set; } = new List<MediaStream>();
         public MediaFileFormat format { get; set; } = new MediaFileFormat();
-        public List<ChapterFormat> chapters { get; set; } = new List<ChapterFormat>();
 
     }
 
     public class MediaFileObj
     {
+        public string error { get; set; } = "";
         public JObject format { get; set; } = new JObject();
-        public List<ChapterFormat> chapters { get; set; } = new List<ChapterFormat>();
         public List<JObject> streams { get; set; } = new List<JObject>();
-        public MediaError error { get; set; } = new MediaError();
 
         public MediaFile toMediaFile()
         {
@@ -36,7 +34,6 @@ namespace df
                 mf.streams.Add(m);
             });
             mf.format = format.ToObject<MediaFileFormat>();
-            mf.chapters = chapters;
             return mf;
         }
 
@@ -60,14 +57,18 @@ namespace df
 
     public class MediaFileFormat
     {
+        public string filename { get; set; } = "";
         public string format_name { get; set; } = "";
-        public string duration { get; set; } = "";
-        public string size { get; set; } = "";
-        public string bit_rate { get; set; } = "";
+        public string format_long_name { get; set; } = "";
+        //Millisecond
+        public long start_time { get; set; } = 0;
+        //Millisecond
+        public long duration { get; set; } = 0;
+        //byte
+        public long size { get; set; } = 0;
+        public long bit_rate { get; set; } = 0;
         public Dictionary<string, string> tags { get; set; } = new Dictionary<string, string>();
 
-        [JsonIgnore]
-        public long durationMilli { get; set; } = 0;
     }
 
     public class StreamDisposition
@@ -121,7 +122,12 @@ namespace df
         public string avg_frame_rate { get; set; } = "";
         public int channels { get; set; } = 0;
         public string channel_layout { get; set; } = "";
-        public string duration { get; set; } = "";
+        
+        //duration / codec_time_base / 1000
+        public long duration_ts { get; set; } = 0;
+        //Millisecond
+        public long duration { get; set; } = 0;
+
         public StreamDisposition disposition { get; set; } = new StreamDisposition();
 
         /// <summary>
@@ -249,9 +255,9 @@ namespace df
 
         public string getDurationStr()
         {
-            if (duration != "")
+            if (duration > 0)
             {
-                return duration;
+                return dfv.timeToStr2(duration,false);
             }
             var str = tags.GetStrVal("DURATION");
             if (str == "")
@@ -263,6 +269,10 @@ namespace df
 
         public long getDuration()
         {
+            if (duration > 0)
+            {
+                return duration;
+            }
             return dfv.timeStrToLong(getDurationStr());
         }
     }

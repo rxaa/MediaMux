@@ -115,7 +115,7 @@ namespace df
         public static extern float ffplay_get_aspect_ratio();
 
         [DllImport(FFdll)]
-        public static extern IntPtr ffprobe_file_info(
+        private static extern IntPtr ffprobe_file_info(
                [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8Marshaler))]
             string file);
 

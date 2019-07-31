@@ -187,7 +187,7 @@ namespace MediaMux
             progressBarProc.Value = 0;
             ff.onProc = per =>
             {
-                long remain = ff.info.format.durationMilli - dfv.timeStrToLong(ff.processTime);
+                long remain = ff.info.format.duration - dfv.timeStrToLong(ff.processTime);
                 float speed = 0;
                 try
                 {
@@ -515,7 +515,7 @@ namespace MediaMux
             var ff = new FFmpeg();
             foreach (var f in ffs)
             {
-                ff.info.format.durationMilli += f.info.format.durationMilli;
+                ff.info.format.duration += f.info.format.duration;
             }
             var fileName = dfv.getFile2(files[0], getFileCon());
             try
@@ -1128,7 +1128,7 @@ namespace MediaMux
         }
 
         List<string> convertEachRes = new List<string>();
-        async void batchEncode()
+        async Task batchEncode()
         {
             if (files.Count < 1)
             {
@@ -1187,8 +1187,7 @@ namespace MediaMux
 
         async private void converteachfileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-            batchEncode();
+            await batchEncode();
         }
 
 
