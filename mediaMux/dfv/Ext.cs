@@ -15,6 +15,15 @@ namespace df
 
         static Dictionary<Control, EventHandler> controlEvent = new Dictionary<Control, EventHandler>();
 
+
+        public static PropertyGrid getGrid(this System.ComponentModel.ITypeDescriptorContext context)
+        {
+            var res = context.GetType().GetProperty("OwnerGrid");
+            if (res == null)
+                return null;
+            return res.GetValue(context) as PropertyGrid;
+        }
+
         public static List<T> MapToList<T>(this int num, Func<int, T> func)
         {
             var list = new List<T>();

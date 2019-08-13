@@ -54,6 +54,9 @@ namespace MediaMux
             ffList = ffs;
             convert = obj;
             propertyGrid1.SelectedObject = convert;
+
+            //for PropertyGridVideoCrop get file name
+            propertyGrid1.Tag = ffs;
         }
 
 
@@ -150,7 +153,11 @@ namespace MediaMux
 
         private void buttonPreview_Click(object sender, EventArgs e)
         {
-
+            if (ffList.Count < 1)
+            {
+                dfv.msgERR(dfv.lang.dat.HaveToAddFile);
+                return;
+            }
             foreach (var ff in ffList)
             {
                 if (ff.info.streams.Sum(it => (it.isVideo() || it.isAudio()) ? 1 : 0) > 0)

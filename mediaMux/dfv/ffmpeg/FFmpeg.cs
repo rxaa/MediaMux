@@ -33,7 +33,6 @@ namespace df
         public string fileName { get; set; } = "";
 
         static string ffmp = @"ffmpeg\ffmpeg.exe";
-        static string ffprobe = @"ffmpeg\ffprobe.exe";
 
 
         public bool isPic()

@@ -192,6 +192,22 @@ namespace df
                 }
             }
 
+
+            var grid = context.getGrid();
+            if (grid != null && grid.Tag is List<FFmpeg>)
+            {
+                var para = grid.Tag as List<FFmpeg>;
+                if (para.Count < 1)
+                {
+                    throw new ExceptionFFmpeg(dfv.lang.dat.HaveToAddFile);
+                }
+                var fp = new FormPlayer();
+                if (fp.cropStart(para[0].fileName))
+                {
+                    return JsonConvert.DeserializeObject(fp.getSelectedRectStr(), value.GetType());
+                }
+            }
+
             return value;
 
         }

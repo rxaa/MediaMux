@@ -8,6 +8,7 @@ namespace df
 {
     public class LangDfv
     {
+        public string HaveToAddFile = "Please add files first.";
         public string Pause = "Pause";
         public string Play = "Play";
         public string Preview = "Preview";

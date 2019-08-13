@@ -15,7 +15,6 @@ namespace MediaMux
         public string Duration = "Duration";
         public string Dont_change = "Don't change";
         public string Split_Concat = "Split/Concat";
-        public string HaveToAddFile = "Please add files first.";
         public string FileName = "File name";
         public string Progressing = "Progressing";
         public string Complete = "Compelete!";
