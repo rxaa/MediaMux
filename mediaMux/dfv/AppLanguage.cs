@@ -145,6 +145,14 @@ namespace df
                     foreach (ToolStripItem con2 in (con as ToolStripMenuItem).DropDownItems)
                     {
                         SetLang(con2);
+
+                        if (!(con2 is ToolStripMenuItem))
+                            continue;
+
+                        foreach (ToolStripItem con3 in (con2 as ToolStripMenuItem).DropDownItems)
+                        {
+                            SetLang(con3);
+                        }
                     }
                 }
             }

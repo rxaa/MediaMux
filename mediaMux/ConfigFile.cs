@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -91,6 +92,24 @@ namespace MediaMux
 
         [Browsable(false)]
         public int winHeight { get; set; } = 0;
+
+
+        [Browsable(false)]
+        public int processPriority { get; set; } = 3;
+
+        public static ProcessPriorityClass[] priorityArr = new ProcessPriorityClass[] {
+            ProcessPriorityClass.RealTime,
+            ProcessPriorityClass.High,
+            ProcessPriorityClass.AboveNormal,
+            ProcessPriorityClass.Normal,
+            ProcessPriorityClass.BelowNormal,
+            ProcessPriorityClass.Idle,
+
+
+
+
+
+        };
 
     }
 }

@@ -26,7 +26,7 @@ namespace df
 
         public bool isUserKill = false;
 
-       
+        public ProcessPriorityClass PriorityClass { get; set; }= ProcessPriorityClass.Normal;
 
 
         public Task exec(string fileName, string cmd)
@@ -46,8 +46,8 @@ namespace df
                 }
                 try
                 {
+                   
                     p.StartInfo.FileName = fileName;
-
                     p.StartInfo.UseShellExecute = false;
 
                     p.StartInfo.Arguments = cmd;    //command
@@ -86,12 +86,13 @@ namespace df
                                 onRes(dat);
                         }
                     };
-
+                
                     if (!p.Start())
                     {
                         throw new Exception(fileName + " start error");
                     }
 
+                    p.PriorityClass = PriorityClass;
                     p.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
 
                     p.BeginErrorReadLine();//开始异步读取

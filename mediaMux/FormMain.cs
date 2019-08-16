@@ -40,6 +40,7 @@ namespace MediaMux
             com.init(this);
             AppLanguage.InitLanguage(contextMenuStripFile);
             AppLanguage.InitLanguage(contextMenuStripStream);
+            AppLanguage.InitLanguage(contextMenuStripStream);
             initFont();
             if (com.cfg.dat.winHeight != 0 && com.cfg.dat.winWidth != 0)
             {
@@ -365,9 +366,19 @@ namespace MediaMux
 #if DEBUG
 
 #endif
-
             if (com.cfg.dat.check_update != "")
                 this.checkUpdate();
+
+            if (com.cfg.dat.processPriority < ConfigFile.priorityArr.Length)
+                FFmpeg.PriorityClass = ConfigFile.priorityArr[com.cfg.dat.processPriority];
+            processToolStripMenuItem.setSelectItem(com.cfg.dat.processPriority);
+            processToolStripMenuItem.onSelectItem(index =>
+            {
+                com.cfg.dat.processPriority = index;
+                if (com.cfg.dat.processPriority < ConfigFile.priorityArr.Length)
+                    FFmpeg.PriorityClass = ConfigFile.priorityArr[com.cfg.dat.processPriority];
+                com.cfg.save();
+            });
 
             flowLayoutPanelProp.Enabled = false;
 
@@ -1127,6 +1138,7 @@ namespace MediaMux
             }
         }
 
+        //each file command result
         List<string> convertEachRes = new List<string>();
         async Task batchEncode()
         {
@@ -1166,6 +1178,12 @@ namespace MediaMux
                 }
                 catch (Exception err)
                 {
+                    if (err.Message == com.lang.dat.Already_has_a_task)
+                    {
+                        FFmpeg.getAllStreams(ffs);
+                        dfv.msgERR(err.Message);
+                        return;
+                    }
                     removeEmptyFile(fileName);
                     var str = com.lang.dat.Error + ":" + Path.GetFileName(fileName);
                     listViewFile.Items[ind].ForeColor = Color.Red;
@@ -1304,6 +1322,11 @@ namespace MediaMux
         private void buttonBatchEncode_Click(object sender, EventArgs e)
         {
             batchEncode();
+        }
+
+        private void processToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+           
         }
     }
 }

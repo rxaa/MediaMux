@@ -331,6 +331,12 @@ namespace df
         {
             return getAllStreams(new FFmpeg[] { files });
         }
+
+        /// <summary>
+        /// Set each file's fileIndex
+        /// </summary>
+        /// <param name="files"></param>
+        /// <returns></returns>
         public static List<MediaStream> getAllStreams(IEnumerable<FFmpeg> files)
         {
             List<MediaStream> list = new List<MediaStream>();
@@ -1121,6 +1127,8 @@ namespace df
 
         public Action<string> onResLine = null;
 
+        public static ProcessPriorityClass PriorityClass { get; set; } = ProcessPriorityClass.Normal;
+
         private async Task execOne(string cmd, int nPass)
         {
 #if DEBUG
@@ -1139,6 +1147,7 @@ namespace df
 
             string errPrev = "";
             CommandTask command = new CommandTask();
+            command.PriorityClass = PriorityClass;
             command.onErr = (dat) =>
             {
 

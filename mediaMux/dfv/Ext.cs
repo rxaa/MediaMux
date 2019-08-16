@@ -15,6 +15,31 @@ namespace df
 
         static Dictionary<Control, EventHandler> controlEvent = new Dictionary<Control, EventHandler>();
 
+        public static void setSelectItem(this ToolStripMenuItem menu,int index)
+        {
+            for (var i = 0; i < menu.DropDownItems.Count; i++)
+            {
+                var item = menu.DropDownItems[i];
+                if(item is ToolStripMenuItem)
+                {
+                    (item as ToolStripMenuItem).Checked = index == i;
+                }
+            }
+        }
+
+        public static void onSelectItem(this ToolStripMenuItem menu,Action<int> onSelect)
+        {
+            for (var i = 0; i < menu.DropDownItems.Count; i++)
+            {
+                var item = menu.DropDownItems[i];
+                var index = i;
+                item.Click += (send, e) =>
+                {
+                    setSelectItem(menu, index);
+                    onSelect(index);
+                };
+            }
+        }
 
         public static PropertyGrid getGrid(this System.ComponentModel.ITypeDescriptorContext context)
         {

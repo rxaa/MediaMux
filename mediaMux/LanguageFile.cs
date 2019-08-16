@@ -133,5 +133,13 @@ For a midtitle, the value is ignored - the text will be vertically centred";
 
         public string override_ass = "override ass font";
         public string override_ass_descr = "Force override Advanced SubStation Alpha (ASS) font.";
+
+        public string Process_priority = "Process priority";
+        public string Real_time = "Real time";
+        public string High = "High";
+        public string Above_normal = "Above normal";
+        public string Normal = "Normal";
+        public string Below_normal = "Below normal";
+        public string Low = "Low";
     }
 }
