@@ -177,7 +177,7 @@
   "delay": "延迟",
   "delay_descr": "设置每一个声道的延迟毫秒值, 声道之间用’|’号分隔.  If number of given delays is smaller than number of channels all remaining channels will not be delayed. If you want to delay exact number of samples, append ’S’ to number. ",
   "tempo": "速率",
-  "tempo_descr": "默认速率为1. 取值范围： [0.5, 100.0] . \r\注意： 速率大于 2 时，将跳过一些音频样本，而不是混合. If for any reason this is a concern it is always possible to daisy-chain several instances of atempo to achieve the desired product tempo.",
+  "tempo_descr": "默认速率为1. 取值范围： [0.5, 100.0] . \r\n注意： 速率大于 2 时，将跳过一些音频样本，而不是混合. If for any reason this is a concern it is always possible to daisy-chain several instances of atempo to achieve the desired product tempo.",
   "volume": "音量",
   "volume_descr": "默认音量:'1.0'. ",
   "mix_audio": "混音",

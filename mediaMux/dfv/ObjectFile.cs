@@ -87,7 +87,7 @@ namespace df
                 }
                 catch (Exception ce)
                 {
-
+                    dfv.log(ce + "");
                     _dat = new T();
                 }
             }
