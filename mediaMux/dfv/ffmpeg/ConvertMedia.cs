@@ -42,10 +42,10 @@ namespace df
             "119.88",
             "120"
         };
-        public static string[] extAudios = new string[] { "mka", "m4a", "mp3", "ogg", "flac" };
+        public static string[] extAudios = new string[] { "mka", "m4a", "mp3", "ogg", "wav", "flac" };
         public static string[] extVideos = new string[] { "mkv", "mp4", "mov", "webm", "flv", "avi" };
 
-        public static string[] codeAudios = new string[] { "aac", "mp3", "ac3","eac3", "flac", "opus", "vorbis" };
+        public static string[] codeAudios = new string[] { "aac", "mp3", "ac3", "eac3", "flac", "opus", "vorbis", "pcm_s16le", "pcm_s32le" };
         public static string[] codecVideos = new string[] { "", "h264", "h264_nvenc", "h264_qsv", "hevc", "hevc_nvenc", "hevc_qsv", "vp9" };
 
         public static string[] codecVideosStr
@@ -64,7 +64,7 @@ namespace df
             else if (code.Contains("qsv"))
                 return new string[] { "", "veryfast", "faster", "fast", "medium",
         "slow","slower","veryslow" };
-            else if(code.Contains("vp9"))
+            else if (code.Contains("vp9"))
                 return new string[] { "", "realtime", "good", "best" };
 
             return new string[] {  "","ultrafast", "superfast", "veryfast", "faster", "fast", "medium",
