@@ -108,6 +108,8 @@
   "Normal": "標準",
   "Below_normal": "低標準",
   "Low": "低",
+  "After_encoding": "轉碼完成後",
+  "Shutdown_PC": "關閉電腦",
   "HaveToAddFile": "請先添加檔",
   "Pause": "暫停",
   "Play": "播放",
@@ -346,5 +348,7 @@
   "splitrd_skip_descr": "Enable skipping split RD analysis when sum of split CU rdCost larger than one split CU rdCost for Intra CU. Default disabled.",
   "b_intra_descr": "Enables the evaluation of intra modes in B slices. Default disabled.",
   "open_gop_descr": "Enable open GOP, allow I-slices to be non-IDR.",
-  "mbtree_descr": "mb-tree ratecontrol.x264 only."
+  "mbtree_descr": "mb-tree ratecontrol.x264 only.",
+  "me_descr": "Motion search method. Generally, the higher the number the harder the ME method will try to find an optimal match. Diamond search is the simplest. Hexagon search is a little better. Uneven Multi-Hexegon is an adaption of the search method used by x264 for slower presets. Star is a three step search adapted from the HM encoder: a star-pattern search followed by an optional radix scan followed by an optional star-search refinement. Full is an exhaustive search; an order of magnitude slower than all other searches but not much better than umh or star. SEA is similar to FULL search; a three step motion search adopted from x264: DC calculation followed by ADS calculation followed by SAD of the passed motion vector candidates, hence faster than Full search.\r\n0.dia\r\n1.hex (default)\r\n2.umh\r\n3.star\r\n4.sea\r\n5.full",
+  "subme_descr": "Subpixel motion estimation and mode decision"
 }

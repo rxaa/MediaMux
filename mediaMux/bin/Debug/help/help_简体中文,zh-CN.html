@@ -14,6 +14,12 @@
     <a href="#mux_batch_encode">
         <h2>‘开始封装’与‘批量转码’的区别？</h2>
     </a>
+    <a href="#mux26510">
+        <h2>如何压制10bit视频？</h2>
+    </a>
+    <a href="#ffmpeg_version">
+        <h2>如何替换升级FFmpeg版本？</h2>
+    </a>
     <a href="#burn_in_subtitle">
         <h2>如何内封(burn in)字幕</h2>
     </a>
@@ -29,6 +35,22 @@
         <h2 id="mux_batch_encode">‘开始封装’与‘批量转码’的区别？</h2>
         ‘开始封装’会将文件列表中的所有视频，音频或字幕全部封装为一个文件（内含多个轨道）。<br />
         ‘批量转码’则是针对每个文件分别进行编码并输出。
+    </p>
+    <hr>
+    <p>
+        <h2 id="mux26510">如何压制10bit视频？</h2>
+        像素格式选择：yuv420p10le
+    </p>
+    <hr>
+    <p>
+        <h2 id="ffmpeg_version">如何替换升级FFmpeg版本？</h2>
+        为保证兼容性并未使用最新版ffmpeg, 如有需要可以手动替换内置的ffmpeg.<br />
+        下载你想要的ffmpeg版本：<br />
+        <p>64位： <a href="https://ffmpeg.zeranoe.com/builds/win64/shared/"
+                target="_blank">https://ffmpeg.zeranoe.com/builds/win64/shared/</a></p>
+        <p>32位：<a href="https://ffmpeg.zeranoe.com/builds/win32/shared/"
+                target="_blank">https://ffmpeg.zeranoe.com/builds/win32/shared/</a></p>
+        解压后将bin目录里的所有文件复制替换到MediaMux/ffmpeg目录里即可。
     </p>
     <hr>
     <p>

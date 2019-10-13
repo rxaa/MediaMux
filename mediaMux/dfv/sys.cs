@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -11,7 +12,7 @@ namespace df
     class sys
     {
 
-      
+
 
         public enum ShowCommands : int
         {
@@ -40,5 +41,11 @@ namespace df
             string lpDirectory,
             ShowCommands nShowCmd);
 
+
+
+        public static void shutdown()
+        {
+            Process.Start("shutdown.exe", "-s");
+        }
     }
 }

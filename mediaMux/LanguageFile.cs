@@ -141,5 +141,7 @@ For a midtitle, the value is ignored - the text will be vertically centred";
         public string Normal = "Normal";
         public string Below_normal = "Below normal";
         public string Low = "Low";
+        public string After_encoding = "After encoding";
+        public string Shutdown_PC = "Shutdown PC";
     }
 }

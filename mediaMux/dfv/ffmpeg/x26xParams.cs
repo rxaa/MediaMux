@@ -84,6 +84,20 @@ namespace df
         [ConvertAttribute(x265name = "aq-strength")]
         public string aq_strength { get; set; } = "";
 
+
+        [PropertyList(list = new string[] { "dia", "hex", "umh", "star", "sea", "full","esa","tesa"}, exclusive = false)]
+        [TypeConverter(typeof(ListConverter))]
+        [DescriptionDf("me_descr")]
+        [ConvertAttribute(name = "me")]
+        public string me { get; set; } = "";
+
+        [PropertySlide(defaul = 2, max = 11, min = 0, step = 1, toFloat = 1)]
+        [EditorAttribute(typeof(PropertyGridSlide), typeof(System.Drawing.Design.UITypeEditor))]
+        [DescriptionDf("subme_descr")]
+        [ConvertAttribute(name = "subme")]
+        public string subme { get; set; } = "";
+        
+
         [DescriptionDf("merange_descr")]
         public string merange { get; set; } = "";
 

@@ -665,6 +665,8 @@ namespace MediaMux
                 setLog(cmd, ff);
                 await ff.exec(cmd);
                 progressEnd();
+                if (com.shutdown)
+                    sys.shutdown();
             }
             catch (Exception err)
             {
@@ -1184,6 +1186,7 @@ namespace MediaMux
                         dfv.msgERR(err.Message);
                         return;
                     }
+                    com.shutdown = false;
                     removeEmptyFile(fileName);
                     var str = com.lang.dat.Error + ":" + Path.GetFileName(fileName);
                     listViewFile.Items[ind].ForeColor = Color.Red;
@@ -1201,6 +1204,8 @@ namespace MediaMux
             labelProc.Text = successCount + " " + com.lang.dat.Complete + " "
                 + (ffs.Count - successCount) + " " + com.lang.dat.Failed + "!";
             FFmpeg.getAllStreams(ffs);
+            if (com.shutdown)
+                sys.shutdown();
         }
 
         async private void converteachfileToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1327,6 +1332,11 @@ namespace MediaMux
         private void processToolStripMenuItem_Click(object sender, EventArgs e)
         {
            
+        }
+
+        private void ShutdownPcToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            com.shutdown = ShutdownPcToolStripMenuItem.Checked;
         }
     }
 }

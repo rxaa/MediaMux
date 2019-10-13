@@ -95,6 +95,16 @@
             this.stopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.converteachfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.commandlineToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.processToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.realtimeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.highToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.abovenormalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.normalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.belownormalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.转码完成后ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ShutdownPcToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -121,14 +131,6 @@
             this.button2 = new System.Windows.Forms.Button();
             this.buttonClear = new System.Windows.Forms.Button();
             this.buttonAdd = new System.Windows.Forms.Button();
-            this.processToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.highToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.abovenormalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.normalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.belownormalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.lowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.realtimeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -776,7 +778,8 @@
             this.converteachfileToolStripMenuItem,
             this.commandlineToolStripMenuItem1,
             this.toolStripSeparator2,
-            this.processToolStripMenuItem});
+            this.processToolStripMenuItem,
+            this.转码完成后ToolStripMenuItem});
             this.muxerToolStripMenuItem.Name = "muxerToolStripMenuItem";
             this.muxerToolStripMenuItem.Size = new System.Drawing.Size(62, 24);
             this.muxerToolStripMenuItem.Text = "Muxer";
@@ -811,6 +814,79 @@
             this.commandlineToolStripMenuItem1.Size = new System.Drawing.Size(207, 26);
             this.commandlineToolStripMenuItem1.Text = "Command_line";
             this.commandlineToolStripMenuItem1.Click += new System.EventHandler(this.commandlineToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(204, 6);
+            // 
+            // processToolStripMenuItem
+            // 
+            this.processToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.realtimeToolStripMenuItem,
+            this.highToolStripMenuItem,
+            this.abovenormalToolStripMenuItem,
+            this.normalToolStripMenuItem,
+            this.belownormalToolStripMenuItem,
+            this.lowToolStripMenuItem});
+            this.processToolStripMenuItem.Name = "processToolStripMenuItem";
+            this.processToolStripMenuItem.Size = new System.Drawing.Size(207, 26);
+            this.processToolStripMenuItem.Text = "Process_priority";
+            this.processToolStripMenuItem.Click += new System.EventHandler(this.processToolStripMenuItem_Click);
+            // 
+            // realtimeToolStripMenuItem
+            // 
+            this.realtimeToolStripMenuItem.Name = "realtimeToolStripMenuItem";
+            this.realtimeToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.realtimeToolStripMenuItem.Text = "Real_time";
+            // 
+            // highToolStripMenuItem
+            // 
+            this.highToolStripMenuItem.Name = "highToolStripMenuItem";
+            this.highToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.highToolStripMenuItem.Text = "High";
+            // 
+            // abovenormalToolStripMenuItem
+            // 
+            this.abovenormalToolStripMenuItem.Name = "abovenormalToolStripMenuItem";
+            this.abovenormalToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.abovenormalToolStripMenuItem.Text = "Above_normal";
+            // 
+            // normalToolStripMenuItem
+            // 
+            this.normalToolStripMenuItem.Checked = true;
+            this.normalToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.normalToolStripMenuItem.Name = "normalToolStripMenuItem";
+            this.normalToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.normalToolStripMenuItem.Text = "Normal";
+            // 
+            // belownormalToolStripMenuItem
+            // 
+            this.belownormalToolStripMenuItem.Name = "belownormalToolStripMenuItem";
+            this.belownormalToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.belownormalToolStripMenuItem.Text = "Below_normal";
+            // 
+            // lowToolStripMenuItem
+            // 
+            this.lowToolStripMenuItem.Name = "lowToolStripMenuItem";
+            this.lowToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.lowToolStripMenuItem.Text = "Low";
+            // 
+            // 转码完成后ToolStripMenuItem
+            // 
+            this.转码完成后ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ShutdownPcToolStripMenuItem});
+            this.转码完成后ToolStripMenuItem.Name = "转码完成后ToolStripMenuItem";
+            this.转码完成后ToolStripMenuItem.Size = new System.Drawing.Size(207, 26);
+            this.转码完成后ToolStripMenuItem.Text = "After_encoding";
+            // 
+            // ShutdownPcToolStripMenuItem
+            // 
+            this.ShutdownPcToolStripMenuItem.CheckOnClick = true;
+            this.ShutdownPcToolStripMenuItem.Name = "ShutdownPcToolStripMenuItem";
+            this.ShutdownPcToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.ShutdownPcToolStripMenuItem.Text = "Shutdown_PC";
+            this.ShutdownPcToolStripMenuItem.Click += new System.EventHandler(this.ShutdownPcToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
@@ -1050,63 +1126,6 @@
             this.buttonAdd.UseVisualStyleBackColor = true;
             this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
-            // processToolStripMenuItem
-            // 
-            this.processToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.realtimeToolStripMenuItem,
-            this.highToolStripMenuItem,
-            this.abovenormalToolStripMenuItem,
-            this.normalToolStripMenuItem,
-            this.belownormalToolStripMenuItem,
-            this.lowToolStripMenuItem});
-            this.processToolStripMenuItem.Name = "processToolStripMenuItem";
-            this.processToolStripMenuItem.Size = new System.Drawing.Size(207, 26);
-            this.processToolStripMenuItem.Text = "Process_priority";
-            this.processToolStripMenuItem.Click += new System.EventHandler(this.processToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(204, 6);
-            // 
-            // highToolStripMenuItem
-            // 
-            this.highToolStripMenuItem.Name = "highToolStripMenuItem";
-            this.highToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
-            this.highToolStripMenuItem.Text = "High";
-            // 
-            // abovenormalToolStripMenuItem
-            // 
-            this.abovenormalToolStripMenuItem.Name = "abovenormalToolStripMenuItem";
-            this.abovenormalToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
-            this.abovenormalToolStripMenuItem.Text = "Above_normal";
-            // 
-            // normalToolStripMenuItem
-            // 
-            this.normalToolStripMenuItem.Checked = true;
-            this.normalToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.normalToolStripMenuItem.Name = "normalToolStripMenuItem";
-            this.normalToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
-            this.normalToolStripMenuItem.Text = "Normal";
-            // 
-            // belownormalToolStripMenuItem
-            // 
-            this.belownormalToolStripMenuItem.Name = "belownormalToolStripMenuItem";
-            this.belownormalToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
-            this.belownormalToolStripMenuItem.Text = "Below_normal";
-            // 
-            // lowToolStripMenuItem
-            // 
-            this.lowToolStripMenuItem.Name = "lowToolStripMenuItem";
-            this.lowToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
-            this.lowToolStripMenuItem.Text = "Low";
-            // 
-            // realtimeToolStripMenuItem
-            // 
-            this.realtimeToolStripMenuItem.Name = "realtimeToolStripMenuItem";
-            this.realtimeToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
-            this.realtimeToolStripMenuItem.Text = "Real_time";
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -1257,6 +1276,8 @@
         private System.Windows.Forms.ToolStripMenuItem belownormalToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem lowToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem realtimeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 转码完成后ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ShutdownPcToolStripMenuItem;
     }
 }
 

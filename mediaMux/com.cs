@@ -15,6 +15,8 @@ namespace MediaMux
         public static ObjectFile<CodeListCfg> codes = new ObjectFile<CodeListCfg>();
         public static ObjectFile<LanguageFile> lang = null;
 
+        public static bool shutdown = false;
+
         public static string getVer()
         {
             var v = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
@@ -119,7 +121,7 @@ namespace MediaMux
         public static string homeUrl()
         {
             if (System.Threading.Thread.CurrentThread.CurrentCulture.Name == "zh-CN")
-               return "https://www.mediamux.net/";
+                return "https://www.mediamux.net/";
             else
                 return "https://mediamux.net/";
         }

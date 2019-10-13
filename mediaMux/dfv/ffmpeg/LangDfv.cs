@@ -329,5 +329,15 @@ Alternatively, the options can be specified as a flat string: strength[:radius]"
         public string open_gop_descr = "Enable open GOP, allow I-slices to be non-IDR.";
 
         public string mbtree_descr = "mb-tree ratecontrol.x264 only.";
+
+        public string me_descr = @"Motion search method. Generally, the higher the number the harder the ME method will try to find an optimal match. Diamond search is the simplest. Hexagon search is a little better. Uneven Multi-Hexegon is an adaption of the search method used by x264 for slower presets. Star is a three step search adapted from the HM encoder: a star-pattern search followed by an optional radix scan followed by an optional star-search refinement. Full is an exhaustive search; an order of magnitude slower than all other searches but not much better than umh or star. SEA is similar to FULL search; a three step motion search adopted from x264: DC calculation followed by ADS calculation followed by SAD of the passed motion vector candidates, hence faster than Full search.
+0.dia\n
+1.hex (default)\n
+2.umh\n
+3.star\n
+4.sea\n
+5.full";
+
+        public string subme_descr = "Subpixel motion estimation and mode decision";
     }
 }
