@@ -1,4 +1,4 @@
-set vs_path=C:\"Program Files (x86)"\"Microsoft Visual Studio"\2017\Professional\Common7\IDE\devenv.exe
+set vs_path=C:\"Program Files (x86)"\"Microsoft Visual Studio"\2019\Professional\Common7\IDE\devenv.exe
 set out_path=d:\0.SC\MediaMux
 set win_rar=C:\"Program Files"\WinRAR\WinRAR.exe
 

@@ -660,6 +660,7 @@ namespace MediaMux
             try
             {
                 var ff = new FFmpeg();
+                ff.useShortest = checkBoxShortest.Checked;
                 progressStart(ff, Path.GetFileName(fileName));
                 var cmd = ff.muxerCommand(ffs, streamsCurrent, fileName, convertAll);
                 setLog(cmd, ff);
@@ -968,6 +969,7 @@ namespace MediaMux
             {
 
                 var ff = new FFmpeg();
+                ff.useShortest = checkBoxShortest.Checked;
                 var str = ff.muxerCommand(ffs, streamsCurrent, fileName, convertAll);
 
                 var cl = new FormCommand();
@@ -1161,6 +1163,7 @@ namespace MediaMux
                 try
                 {
                     var ff = new FFmpeg();
+                    ff.useShortest = checkBoxShortest.Checked;
                     progressStart(ff, Path.GetFileName(fileName), (ind + 1) + "/" + ffs.Count + " ");
                     var cmd = ff.muxerCommand(f, FFmpeg.getAllStreams(f), fileName, convert);
                     execRes = cmd + "\r\n";

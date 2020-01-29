@@ -17,6 +17,9 @@
     <a href="#mux26510">
         <h2>如何压制10bit视频？</h2>
     </a>
+    <a href="#nvenc_error">
+        <h2>_nvenc编码报错？</h2>
+    </a>
     <a href="#ffmpeg_version">
         <h2>如何替换升级FFmpeg版本？</h2>
     </a>
@@ -40,6 +43,13 @@
     <p>
         <h2 id="mux26510">如何压制10bit视频？</h2>
         像素格式选择：yuv420p10le
+    </p>
+    <hr>
+    <p>
+        <h2 id="nvenc_error">_nvenc编码报错？</h2>
+        先确保自己的显卡是英伟达<br />
+        如果出现"Driver does not support the required nvenc API version. "错误, 请升级显卡驱动至最新版本.
+        只有10xx系列以上显卡才支持10bit编码, 9xx系显卡不支持.
     </p>
     <hr>
     <p>

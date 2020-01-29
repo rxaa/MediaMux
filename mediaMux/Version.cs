@@ -24,9 +24,15 @@ namespace MediaMux
 
             for (int i = 0; i < verOld.Length; i++)
             {
+                var nI = int.Parse(verNew[i]);
+                var oI = int.Parse(verOld[i]);
                 if (i >= verNew.Length)
                     return false;
-                if (int.Parse(verNew[i]) > int.Parse(verOld[i]))
+
+                if (nI < oI)
+                    return false;
+
+                if (nI> oI)
                     return true;
             }
 

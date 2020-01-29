@@ -34,6 +34,8 @@ namespace df
 
         static string ffmp = @"ffmpeg\ffmpeg.exe";
 
+        public bool useShortest = false;
+
 
         public bool isPic()
         {
@@ -813,6 +815,11 @@ namespace df
             }
 
             cmd += "\n " + shortest;
+
+            if (useShortest)
+            {
+                cmd += "\n -shortest";
+            }
 
             if (convertAll != null && convertAll.video_2pass == "1")
             {

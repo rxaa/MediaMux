@@ -110,6 +110,7 @@
   "Low": "低",
   "After_encoding": "转码完成后",
   "Shutdown_PC": "关闭计算机",
+  "Use_shortest": "使用最短流",
   "HaveToAddFile": "请先添加文件",
   "Pause": "暂停",
   "Play": "播放",
